@@ -1,36 +1,31 @@
 import React, { Component } from 'react'
 import './SMaterialBlock.css'
+import SMaterialForm from './SMaterialForm'
 
 export default class ItemBlock extends Component {
     state = {
-        data : this.props
+        myemail: 'baba@baba.com',
+        displayform: 'none',
+    }
+    onClickAdd=()=>{
+        this.setState({
+            displayform: 'inline',
+        })
+        console.log('image clicked',this.displayform)
     }
     render() {
-        this.state.data.map(item =>{
+        console.log('class email id ', this.props['data'])
+        if (this.state.myemail === this.props['data']) {
             return (
-                <div className = 'content' key = {item.id}>
-                    <img src="https://img.icons8.com/cute-clipart/64/000000/file.png" alt = ""/>
-                    <div className = "title-container">
-                        <h3>{item.file_title}</h3>
-                    </div>
-                    <div className = "date-container">
-                        <p>September 5</p>
-                    </div>
-                                
-                </div>
+                <span>
+                    <img src="https://img.icons8.com/flat_round/50/000000/plus.png" onClick = {() => this.onClickAdd()} alt = ""/>
+                    <SMaterialForm displayform = {this.state.displayform}></SMaterialForm>
+                </span>
+                
             )
-        })
-        return (
-            <div className = 'content' >
-                <img src="https://img.icons8.com/cute-clipart/64/000000/file.png" alt = ""/>
-                <div className = "title-container">
-                    <h3>fafdfa</h3>
-                </div>
-                <div className = "date-container">
-                    <p>September 5</p>
-                </div>
-                            
-            </div>
-        )
+        }
+        else {
+            return <p></p>
+        }
     }
 }

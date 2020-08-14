@@ -11,21 +11,27 @@ export default class ItemBlock extends Component {
         this.setState({
             displayform: 'inline',
         })
-        console.log('image clicked',this.displayform)
+        console.log('image clicked',this.state.displayform)
     }
     render() {
         console.log('class email id ', this.props['data'])
-        if (this.state.myemail === this.props['data']) {
             return (
                 <span>
+                {
+                    (this.state.myemail === this.props['data'])
+                    ? <span>
                     <img src="https://img.icons8.com/flat_round/50/000000/plus.png" onClick = {() => this.onClickAdd()} alt = ""/>
-                    <SMaterialForm displayform = {this.state.displayform}></SMaterialForm>
+                    {
+                        (this.state.displayform === 'inline')
+                        ? <SMaterialForm displayform = {this.state.displayform}></SMaterialForm>
+                        : <p></p>
+                    }
+                    
+                    </span>
+                    : <h1>sorry</h1>
+                }
                 </span>
                 
             )
-        }
-        else {
-            return <p></p>
-        }
     }
 }

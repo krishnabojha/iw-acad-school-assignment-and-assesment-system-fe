@@ -16,10 +16,11 @@ export default class SMaterialBlock extends Component {
     };
     async componentDidMount() {
         try {
+            // fetching the list of created class
             const rooms = await fetch('http://127.0.0.1:8000/data/studymaterial_class_list')
             const class_data = await rooms.json();
             // console.log(class_data[3].email)
-
+            // fetching the list of study material of respective id
             const res = await fetch('http://127.0.0.1:8000/data/studymaterial_material_list/5'); // fetching the data from api, before the page loaded
             const study_data = await res.json();
             const items = study_data
@@ -32,7 +33,7 @@ export default class SMaterialBlock extends Component {
             console.log(e);
         }
       }
-
+      // returning only videos when clicked to video btn
       onClickVideos=()=>{
         this.setState({
         items : this.state.study_data.filter(function (item){
@@ -45,7 +46,7 @@ export default class SMaterialBlock extends Component {
         bgcolorall: ''
         })
       }
-
+      // returning only files when clicked to files btn
       onClickFiles=()=>{
         this.setState({
             items : this.state.study_data.filter(function (item){
@@ -58,7 +59,7 @@ export default class SMaterialBlock extends Component {
             bgcolorall: ''          
         })
       }
-
+    // returning all videos and files when clicked to All btn
       onClickAll=()=>{
         this.setState({
           items : this.state.study_data,
@@ -82,18 +83,21 @@ export default class SMaterialBlock extends Component {
                 <div className = 'study-content-div'>
                     
                     {
-                        this.state.items.map(studyobject =>{
+                        this.state.items.reverse().map(studyobject =>{
+                            // display content having only videos
                             if (this.state.show === 'video'|| studyobject.file_title === ''){
-                                return <ItemComponent linkObject = {studyobject.videos} imgsrc = {'https://img.icons8.com/fluent/48/000000/video.png'} title = {studyobject.video_title}></ItemComponent>
+                                return <ItemComponent linkObject = {studyobject.videos} imgsrc = {'https://img.icons8.com/fluent/48/000000/video.png'} title = {studyobject.video_title} key = {studyobject.id}></ItemComponent>
                             }
+                            // displaying content having only files
                             else if(this.state.show === 'file' || studyobject.video_title === ''){
-                                return <ItemComponent linkObject = {studyobject.files} imgsrc = {'https://img.icons8.com/cute-clipart/64/000000/file.png'} title = {studyobject.file_title}></ItemComponent>
+                                return <ItemComponent linkObject = {studyobject.files} imgsrc = {'https://img.icons8.com/cute-clipart/48/000000/file.png'} title = {studyobject.file_title} key = {studyobject.id}></ItemComponent>
                             }
+                            // displaying content having both files and videos
                             else if(this.state.show ==='all' || (studyobject.video_title !== '' && studyobject.file_title !== '')) {
                                 return(
-                                    <span>
+                                    <span key = {studyobject.id}>
                                         <ItemComponent linkObject = {studyobject.videos} imgsrc = {'https://img.icons8.com/fluent/48/000000/video.png'} title = {studyobject.video_title}></ItemComponent>
-                                        <ItemComponent linkObject = {studyobject.files} imgsrc = {'https://img.icons8.com/cute-clipart/64/000000/file.png'} title = {studyobject.file_title}></ItemComponent>
+                                        <ItemComponent linkObject = {studyobject.files}  imgsrc = {"https://img.icons8.com/cute-clipart/48/000000/file.png"} title = {studyobject.file_title}></ItemComponent>
                                     </span>       
                                 );
                             }

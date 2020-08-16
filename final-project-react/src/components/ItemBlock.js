@@ -5,13 +5,18 @@ import SMaterialForm from './SMaterialForm'
 export default class ItemBlock extends Component {
     state = {
         myemail: 'baba@baba.com',
-        displayform: 'none',
+        displayform: false,
     }
     onClickAdd=()=>{
         this.setState({
-            displayform: 'inline',
+            displayform: true,
         })
         console.log('image clicked',this.state.displayform)
+    }
+    onHideForm = () =>{
+        this.setState({
+            displayform: false
+        })
     }
     render() {
         console.log('class email id ', this.props['data'])
@@ -22,8 +27,8 @@ export default class ItemBlock extends Component {
                     ? <span>
                     <img src="https://img.icons8.com/flat_round/50/000000/plus.png" onClick = {() => this.onClickAdd()} alt = ""/>
                     {
-                        (this.state.displayform === 'inline')
-                        ? <SMaterialForm displayform = {this.state.displayform}></SMaterialForm>
+                        (this.state.displayform === true)
+                        ? <SMaterialForm onHideForm = {this.onHideForm}></SMaterialForm>
                         : <p></p>
                     }
                     

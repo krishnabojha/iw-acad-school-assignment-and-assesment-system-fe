@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './SMaterialBlock.css'
+import './SMaterialForm.css'
 
 export default class SMaterialForm extends Component {
 
@@ -13,43 +13,64 @@ export default class SMaterialForm extends Component {
 
     handleSubmit = (event) =>{
         console.log('form submited')
+        //created object of FormData
+        const formData = new FormData();
+        // append input data to formdata
+        formData.append( 'file_title', this.state.file_title )
+        formData.append('video_title', this.state.video_title)
+        formData.append('files', this.state.files[0])
+        formData.append('videos', this.state.videos[0])
+        formData.append('classid', 5)
+        /// post formdata to server
         fetch('http://127.0.0.1:8000/data/studymaterial_material_create/',{
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                "file_title": this.state.file_title,
-                "video_title": this.state.video_title,
-                // "files": this.state.files,
-                // "videos": this.state.videos,
-                "classid": 5
-            })
-        }).then(function(response){
-            console.log(response);
-            
-        });
+            body: formData
+        })
+        .then((response) => response.json())
+        .then((result) => {
+        console.log('Success:', result);
+        })
+        .catch((error) => {
+        console.error('Error:', error);
+        });   
         event.preventDefault();
+        // hide the form after submiting the data
+        this.props.onHideForm()
         
     }
+    // taking input data on every change of input
     onInputChange = (event) =>{
         this.setState({
-            [event.target.name] : event.target.value
+            [event.target.name] : event.target.value  //values is used for text
         })
         console.log('this is input', this.state)
     }
+    // storing file and video to the variable  
+    onInputFilesChange = (event) =>{
+        this.setState({
+            [event.target.name] : event.target.files //.files is used for files
+        })
+    }
+    // cancel the form display
+    onClickCancel = () =>{
+        this.props.onHideForm()
+    }
     render() {
         console.log('form section', this.state.display)
-        const {file_title, video_title, files, videos} = this.state
+        // importing the variable form the state
+        const {file_title, video_title} = this.state
         return (
-            <div className = 'study-entry-form' >
+            <div className = 'study-entry-form' style = {{display:"inline"}}>
                         <form>
                             <h2>Study material entry form: </h2>
-                            <label>Enter File title : </label>
-                            <input type = "text" name = 'file_title' value = {file_title} onChange = {this.onInputChange}></input><br></br>
-                            <label>Enter Video title : </label>
-                            <input type = "text" name = 'video_title' value = {video_title} onChange = {this.onInputChange}></input>
-                            Files : <input type = "file" name = 'files' value = {files} onChange = {this.onInputChange}></input>
-                            Videos : <input type = "file" name = 'videos' value = {videos} onChange = {this.onInputChange}></input><br></br>
-                            <button type = "submit" onClick = {this.handleSubmit}>Submit</button>
+                            <label>Enter File title : </label><br></br>
+                            <input type = "text" className = "textinput" name = 'file_title' value = {file_title} onChange = {this.onInputChange}></input><br></br>
+                            <label>Enter Video title : </label><br></br>
+                            <input type = "text" className = 'textinput' name = 'video_title' value = {video_title} onChange = {this.onInputChange}></input><br></br>
+                            <input type = "file" className = 'fileinput' name = 'files' onChange = {this.onInputFilesChange}></input><br></br>
+                            <input type = "file" className = 'fileinput' name = 'videos' onChange = {this.onInputFilesChange}></input><br></br>
+                            <button type = "submit" className = "btn" onClick = {this.handleSubmit}>Submit</button>
+                            <button type = 'submit' className = "btn" onClick = {this.onClickCancel}>Cancel</button>
                         </form>
                     </div>
         )

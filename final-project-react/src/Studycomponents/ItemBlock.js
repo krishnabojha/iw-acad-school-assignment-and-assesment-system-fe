@@ -7,12 +7,14 @@ export default class ItemBlock extends Component {
         myemail: 'baba@baba.com',
         displayform: false,
     }
+    // display a form when clicked
     onClickAdd=()=>{
         this.setState({
             displayform: true,
         })
         console.log('image clicked',this.state.displayform)
     }
+    // hide the form when clicked
     onHideForm = () =>{
         this.setState({
             displayform: false

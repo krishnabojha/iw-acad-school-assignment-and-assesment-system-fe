@@ -54,6 +54,8 @@ export default class SMaterialForm extends Component {
     // cancel the form display
     onClickCancel = () =>{
         this.props.onHideForm()
+        localStorage.removeItem('token')
+        window.location.reload();
     }
     render() {
         console.log('form section', this.state.display)

@@ -45,9 +45,12 @@ label{
 .forget-pass{
     margin-top: 10px;
     font-size: 15px;
+    cursor: pointer;
 }
 .create-acc{
     font-size: 13px;
+    color: rgb(11, 151, 245);
+    cursor: pointer;
 }
 
 .signin-form button{

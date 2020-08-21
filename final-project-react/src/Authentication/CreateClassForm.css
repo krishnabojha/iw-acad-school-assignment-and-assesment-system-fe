@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: none;
+}
+.top-bar{
+    width: 100%;
+    height: 50px;
+    background-color: blueviolet;
+}
+.logout-btn{
+    padding: 1%;
+    float: right;
+}
+.logout-btn button{
+    height: 30px;
+    padding: 3px;
+    border-radius: 3px;
+    border: 1px solid rgb(160, 158, 158);
+    margin-right: 5px;
+}
+.logout-btn button:hover{
+    background-color: rgb(55, 130, 243);
+    color:white;    
+}
+.side-bar{
+    height: 100vh;
+    width: 5%;
+    background-color: blueviolet;
+    position: absolute;
+}
+.create-class-form{
+    width: 15%;
+    float: right;
+    margin-top: 10px;
+}
+.create-class-form input{
+    width:100%;
+    height: 30px;
+    border:1px solid rgb(65, 65, 66);
+    border-radius: 3px;
+}
+.create-class-form input:focus{
+    border: 1px solid rgb(40, 175, 228);
+    box-shadow:0 0 10px #86b9e2;
+    outline: none;  
+}
+.classes-div{
+    position: absolute;
+    padding-left: 10%;
+}

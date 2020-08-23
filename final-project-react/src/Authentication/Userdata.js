@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-// import CreateClassForm from './CreateClassForm'
+import CreateClassForm from './CreateClassForm'
 import './CreateClassForm.css'
+// import { Redirect } from 'react-router'
+// import { createHashHistory } from 'history'
 
 export default class Userdata extends Component {
     state = {
@@ -11,6 +13,8 @@ export default class Userdata extends Component {
         userobj: [],
         createbtn: 'Create Class',
         newclassname:'',
+        inClassroom: false,
+        classid:''
     }
     componentDidMount=()=>{
         //fetching token to get user_id
@@ -35,7 +39,10 @@ export default class Userdata extends Component {
         }).then((respone)=>respone.json())
         .then(result =>{
             const {usertoken} = this.state
-            console.log('this is result: before',result)
+            console.log('this is result: before',usertoken[0])
+            if (usertoken[0] === undefined){
+                window.location.reload()
+            }
             this.setState({
                 userobj: result.filter(function(item){return item.id === usertoken[0]['user_id']})
             })
@@ -58,6 +65,10 @@ export default class Userdata extends Component {
             },
         }).then((respone)=>respone.json())
         .then(result =>{
+            console.log('obj result',result)
+            if (localStorage.getItem('email') === null){
+                window.location.reload()
+            }
             this.setState({
                 obj: result.filter(function(value){return value.email === localStorage.getItem('email')})
             })
@@ -106,6 +117,7 @@ export default class Userdata extends Component {
                 createbtn: 'Create Class'
             })
             this.onHandleSubmit()
+            window.location.reload()
         }
     }
     onChangeInput =(event)=>{
@@ -113,16 +125,41 @@ export default class Userdata extends Component {
             [event.target.name]: event.target.value
         })
     }
+    onEnterRoom =(id)=> {
+        this.setState({
+            inClassroom: true,
+            classid:id
+        })
+        console.log('this is id re', id)
+    }
+    onGoBack =()=>{
+        window.location.reload()
+    }
     render() {
+        const abc = this.onEnterRoom
         console.log('this is obj: ', this.state.obj)
         const {newclassname} = this.state
         return (
             <div>
+                 {/* side bar */}
+                 <div className = "side-bar">
+                    
+                </div>
                 <div className = 'top-bar'>
+                {   
+                (this.state.inClassroom === true)?
+                    <div className = 'back-arrow' title = 'goto back' onClick = {this.onGoBack}>
+                        <img src="https://img.icons8.com/fluent//000000/left.png" alt = ''/>               
+                    </div>
+                    :<h3 className = 'class-title'>My Class Room</h3>
+                
+                }
+                
                 <div className = 'logout-btn'>
                     <button type = 'submit' onClick = {this.onCreateClass}>{this.state.createbtn}</button>
                     <button onClick = {this.onLogout}>Logout</button>
                 </div>
+
                 {
                         (this.state.createClass === true)?
                         <div className = 'create-class-form'>
@@ -130,23 +167,23 @@ export default class Userdata extends Component {
                         </div>
                         : <p></p>
                     }
-                </div>
-                {/* side bar */}
-                <div className = "side-bar">
-                    
+                
                 </div>
 
                 <div className = "classes-div">
-                {   
+                {  
+                (this.state.inClassroom === false)?
                     this.state.obj.map(function(item){
-                        return (<div key = {item.id}>
+                        return (<div className = "single-class" key = {item.id} onClick = {abc.bind(this,  item.id)}>
                          <h3>{item.classname}</h3>
                         <h3>{item.email}</h3>
                         </div>)
                     })
+                    : <CreateClassForm classid = {this.state.classid}></CreateClassForm>
                 }
                 </div>
             </div>
         )
     }
 }
+

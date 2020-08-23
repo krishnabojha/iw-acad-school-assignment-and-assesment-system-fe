@@ -21,7 +21,7 @@ export default class SMaterialBlock extends Component {
             const class_data = await rooms.json();
             // console.log(class_data[3].email)
             // fetching the list of study material of respective id
-            const res = await fetch('http://127.0.0.1:8000/data/studymaterial_material_list/5'); // fetching the data from api, before the page loaded
+            const res = await fetch('http://127.0.0.1:8000/data/studymaterial_material_list/'+this.props['classid']); // fetching the data from api, before the page loaded
             const study_data = await res.json();
             const items = study_data
             this.setState({

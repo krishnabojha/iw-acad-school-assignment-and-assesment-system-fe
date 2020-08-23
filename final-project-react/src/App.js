@@ -4,8 +4,6 @@ import React, { Component } from 'react'
 import UserSignUp from './Authentication/UserSignup'
 import UserLogin from './Authentication/UserLogin'
 import Userdata from './Authentication/Userdata'
-// import UserLogin from './Authentication/UserLogin'
-// import {BrowserRouter, Route, Switch} from 'react-router-dom'
 
 export default class App extends Component {
   state = {
@@ -50,6 +48,5 @@ export default class App extends Component {
         <Userdata></Userdata>
       )
     }
-  
   }
 }

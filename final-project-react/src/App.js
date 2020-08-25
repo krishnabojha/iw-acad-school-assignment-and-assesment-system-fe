@@ -7,7 +7,7 @@ import Userdata from './Authentication/Userdata'
 
 export default class App extends Component {
   state = {
-    registered: false,
+    registered: true,
   }
   showLoginForm = () =>{
     this.setState({
@@ -19,11 +19,11 @@ export default class App extends Component {
       registered:false,
     })
   }
-  loggedIn =()=>{
-    this.setState({
-      registered: 'loggedin'
-    })
-  }
+  // loggedIn =()=>{
+  //   this.setState({
+  //     registered: 'loggedin'
+  //   })
+  // }
   render() {
     
     if (!localStorage.getItem('token')) {

@@ -9,41 +9,19 @@ export default class UserLogin extends Component {
     jumpSignup = () =>{
         this.props.showsignup()
     }
-    // componentWillUnmount(){
-    //     if(localStorage.getItem('token') && localStorage.getItem('token') >= 10){
-    //         window.location.reload();
-    //     }
-    // }
+
     handleSubmit = (event) =>{
 
         const formdata = new FormData()
         formdata.append('username', this.state.username)
         formdata.append('password', this.state.password)
-<<<<<<< HEAD
-            fetch('http://127.0.0.1:8000/user/login/', {
-            method: 'POST',
-            Header: 'context-Type: application/json',
-            body: formdata
-            }
-            ).then((response) =>response.json())
-            .then((result)=>{
-                console.log('success', result)
-                console.log('this is token: ', result.token)
-                localStorage.setItem('token',result.token)
-            })
-            .catch((error)=>{
-                console.error('Error:',error)
-            })
-        event.preventDefault();
-        console.log('this is token from browser', localStorage.getItem('token'))
-=======
         fetch('http://127.0.0.1:8000/user/login/', {
         method: 'POST',
+        Header: 'context-Type: application/json',
         body: formdata
         }
         ).then((response) =>response.json())
         .then((result)=>{
-            console.log('hello')
             console.log('success', result)
             console.log('this is token: ', result.token)
             localStorage.setItem('token',result.token)
@@ -52,7 +30,7 @@ export default class UserLogin extends Component {
             console.error('Error:',error)
         })
         event.preventDefault();
->>>>>>> 0bc3235de2bb9b393903587fa9870707f1a76ae5
+        console.log('this is token from browser', localStorage.getItem('token'))
 
     }
     onChangeinput =(event)=>{

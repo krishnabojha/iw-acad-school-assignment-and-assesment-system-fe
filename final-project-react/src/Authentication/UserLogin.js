@@ -25,12 +25,15 @@ export default class UserLogin extends Component {
             console.log('success', result)
             console.log('this is token: ', result.token)
             localStorage.setItem('token',result.token)
+            if(result.token.length >=15 && result.token !== undefined){
+                window.location.reload()
+            }
         })
         .catch((error)=>{
             console.error('Error:',error)
         })
-        event.preventDefault();
         console.log('this is token from browser', localStorage.getItem('token'))
+        event.preventDefault();
 
     }
     onChangeinput =(event)=>{
@@ -39,10 +42,7 @@ export default class UserLogin extends Component {
         })
     }
     render() {
-        console.log('hello krishna', localStorage.getItem('token'))
-        if((localStorage.getItem('token') !== undefined) && localStorage.getItem('token') !== null){
-            window.location.reload();
-        }
+
         console.log('local token : ',localStorage.getItem('token'))
         const {username, password} = this.state
         return (

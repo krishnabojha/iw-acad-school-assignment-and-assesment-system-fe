@@ -9,6 +9,11 @@ export default class UserLogin extends Component {
     jumpSignup = () =>{
         this.props.showsignup()
     }
+    // componentWillUnmount(){
+    //     if(localStorage.getItem('token') && localStorage.getItem('token') >= 10){
+    //         window.location.reload();
+    //     }
+    // }
     handleSubmit = (event) =>{
 
         const formdata = new FormData()
@@ -16,6 +21,7 @@ export default class UserLogin extends Component {
         formdata.append('password', this.state.password)
             fetch('http://127.0.0.1:8000/user/login/', {
             method: 'POST',
+            Header: 'context-Type: application/json',
             body: formdata
             }
             ).then((response) =>response.json())
@@ -28,7 +34,7 @@ export default class UserLogin extends Component {
                 console.error('Error:',error)
             })
         event.preventDefault();
-        window.location.reload();
+        console.log('this is token from browser', localStorage.getItem('token'))
 
     }
     onChangeinput =(event)=>{
@@ -37,6 +43,10 @@ export default class UserLogin extends Component {
         })
     }
     render() {
+        console.log('hello krishna', localStorage.getItem('token'))
+        if((localStorage.getItem('token') !== undefined) && localStorage.getItem('token') !== null){
+            window.location.reload();
+        }
         console.log('local token : ',localStorage.getItem('token'))
         const {username, password} = this.state
         return (

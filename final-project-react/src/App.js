@@ -19,14 +19,14 @@ export default class App extends Component {
       registered:false,
     })
   }
-  // loggedIn =()=>{
-  //   this.setState({
-  //     registered: 'loggedin'
-  //   })
-  // }
+  loggedIn =()=>{
+    this.setState({
+      registered: 'loggedin'
+    })
+  }
   render() {
     
-    if (!localStorage.getItem('token')) {
+    if (!localStorage.getItem('token') || localStorage.getItem('token').length <= 10 ) {
       return (
         <div>
           {/* <UserSignUp></UserSignUp> */}
@@ -42,7 +42,8 @@ export default class App extends Component {
         </div>
       )
     }
-    else{
+    else {
+      console.log('this is token', localStorage.getItem('token'))
       return(
         // <SMaterialBlock></SMaterialBlock>
         <Userdata></Userdata>

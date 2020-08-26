@@ -3,11 +3,11 @@ import '../Authentication/CreateClassForm.css'
 import SMaterialBlock from '../Studycomponents/SMaterialBlock'
 
 
-export default class CreateClassForm extends Component {
+export default class ShowClassItem extends Component {
     
     render() {
         const classId = this.props['classid']
-        console.log('ididid', classId)
+        console.log('Class id : ', classId)
         return (
             <div >
                 <SMaterialBlock classid = {classId}></SMaterialBlock>

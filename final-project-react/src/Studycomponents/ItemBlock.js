@@ -4,8 +4,13 @@ import SMaterialForm from './SMaterialForm'
 
 export default class ItemBlock extends Component {
     state = {
-        myemail: 'baba@baba.com',
+        myemail: '',
         displayform: false,
+    }
+    componentDidMount(){
+        this.setState({
+            myemail: localStorage.getItem('email')
+        })
     }
     // display a form when clicked
     onClickAdd=()=>{
@@ -21,16 +26,18 @@ export default class ItemBlock extends Component {
         })
     }
     render() {
-        console.log('class email id ', this.props['data'])
+        const myclassObj = this.props['data']
+        // console.log('this is user email', this.state.myemail)
+        // console.log('my class email id ', myclassObj['email'])
             return (
                 <span>
                 {
-                    (this.state.myemail === this.props['data'])
+                    (this.state.myemail === myclassObj['email'])
                     ? <span>
                     <img src="https://img.icons8.com/flat_round/50/000000/plus.png" onClick = {() => this.onClickAdd()} alt = ""/>
                     {
                         (this.state.displayform === true)
-                        ? <SMaterialForm onHideForm = {this.onHideForm}></SMaterialForm>
+                        ? <SMaterialForm onHideForm = {this.onHideForm} myclassid = {myclassObj['id']}></SMaterialForm>
                         : <p></p>
                     }
                     

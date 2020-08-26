@@ -18,10 +18,19 @@ export default class SMaterialForm extends Component {
         // append input data to formdata
         formData.append( 'file_title', this.state.file_title )
         formData.append('video_title', this.state.video_title)
-        formData.append('files', this.state.files[0])
-        formData.append('videos', this.state.videos[0])
-        formData.append('classid', 5)
-        /// post formdata to server
+        if (this.state.files !== ''){
+            formData.append('files', this.state.files[0])
+        }
+        if (this.state.videos !== ''){
+            formData.append('videos', this.state.videos[0])
+        }
+        formData.append('classid', this.props['myclassid'])
+
+        if ((this.state.files === '')&& (this.state.videos === '')){
+            alert('you must fill either file or videos')
+        }
+        else{
+            /// post formdata to server
         fetch('http://127.0.0.1:8000/data/studymaterial_material_create/',{
             method: 'POST',
             body: formData
@@ -32,10 +41,11 @@ export default class SMaterialForm extends Component {
         })
         .catch((error) => {
         console.error('Error:', error);
-        });   
-        event.preventDefault();
+        });
         // hide the form after submiting the data
         this.props.onHideForm()
+        }
+        event.preventDefault();
         
     }
     // taking input data on every change of input
@@ -56,7 +66,8 @@ export default class SMaterialForm extends Component {
         this.props.onHideForm()
     }
     render() {
-        console.log('form section', this.state.display)
+        // console.log('form section', this.state.display)
+        console.log('this is class id hora', this.props['myclassid'])
         // importing the variable form the state
         const {file_title, video_title} = this.state
         return (

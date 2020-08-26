@@ -19,7 +19,10 @@ export default class SMaterialBlock extends Component {
             // fetching the list of created class
             const rooms = await fetch('http://127.0.0.1:8000/data/studymaterial_class_list')
             const class_data = await rooms.json();
-            // console.log(class_data[3].email)
+            // console.log('this is class data', class_data)
+            const class_id = this.props['classid']
+            const filtered_class = class_data.filter(function(item){return item.id === class_id})
+            console.log('this is email', filtered_class[0].email)
             // fetching the list of study material of respective id
             const res = await fetch('http://127.0.0.1:8000/data/studymaterial_material_list/'+this.props['classid']); // fetching the data from api, before the page loaded
             const study_data = await res.json();
@@ -27,11 +30,12 @@ export default class SMaterialBlock extends Component {
             this.setState({
                 study_data,
                 items,
-                email: class_data[3].email  // here the 3 is id of class
+                email: filtered_class[0]  // here the 3 is id of class
             });
         } catch (e) {
             console.log(e);
         }
+        console.log('this is email from study material', this.props['classid'])
       }
       // returning only videos when clicked to video btn
       onClickVideos=()=>{

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import CreateClassForm from './CreateClassForm'
+import ShowClassItem from './ShowClassItem'
 import './CreateClassForm.css'
 // import { Redirect } from 'react-router'
 // import { createHashHistory } from 'history'
@@ -16,9 +16,9 @@ export default class Userdata extends Component {
         inClassroom: false,
         classid:''
     }
-    componentDidMount=()=>{
+    async componentDidMount() {
         //fetching token to get user_id
-        fetch('http://127.0.0.1:8000/user/token/',{
+        await fetch('http://127.0.0.1:8000/user/token/',{
             method: 'GET'
         }).then(response => response.json())
         .then(result => {
@@ -30,7 +30,7 @@ export default class Userdata extends Component {
        
         //fetching users to get email
         if (this.state.emailStored === false) {
-            fetch('http://127.0.0.1:8000/user/list/',{
+            await fetch('http://127.0.0.1:8000/user/list/',{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ export default class Userdata extends Component {
         }
        
         // fetching class room to get class room of logged in user 
-        fetch('http://127.0.0.1:8000/data/studymaterial_class_list/',{
+        await fetch('http://127.0.0.1:8000/data/studymaterial_class_list/',{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -75,7 +75,7 @@ export default class Userdata extends Component {
         })
         
         console.log('Token ', localStorage.getItem('token'))
-        console.log('this is email haha', localStorage.getItem('email'))
+        // console.log('this is email haha', localStorage.getItem('email'))
     }
     onHandleSubmit=()=>{
         //creating a new classroom
@@ -179,7 +179,7 @@ export default class Userdata extends Component {
                         <h3>{item.email}</h3>
                         </div>)
                     })
-                    : <CreateClassForm classid = {this.state.classid}></CreateClassForm>
+                    : <ShowClassItem classid = {this.state.classid}></ShowClassItem>
                 }
                 </div>
             </div>

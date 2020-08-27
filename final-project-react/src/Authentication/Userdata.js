@@ -14,7 +14,8 @@ export default class Userdata extends Component {
         createbtn: 'Create Class',
         newclassname:'',
         inClassroom: false,
-        classid:''
+        classid:'',
+        testvariable: ''
     }
     async componentDidMount() {
         //fetching token to get user_id
@@ -29,7 +30,7 @@ export default class Userdata extends Component {
         })
        
         //fetching users to get email
-        if (this.state.emailStored === false) {
+        // if (this.state.emailStored === false) {
             await fetch('http://127.0.0.1:8000/user/list/',{
             method: 'GET',
             headers: {
@@ -39,7 +40,7 @@ export default class Userdata extends Component {
         }).then((respone)=>respone.json())
         .then(result =>{
             const {usertoken} = this.state
-            console.log('this is result: before',usertoken[0])
+            console.log('this is result: before',usertoken[0].user_id)
             if (usertoken[0] === undefined){
                 window.location.reload()
             }
@@ -50,32 +51,21 @@ export default class Userdata extends Component {
             /// storing the email to the local storage
             localStorage.setItem('email',this.state.userobj[0].email)
         })
-        this.setState({
-            emailStored: true
-        })
+        // this.setState({
+        //     emailStored: true
+        // })
         console.log('this is emailstored: ',this.state.emailStored)
-        }
-       
-        // fetching class room to get class room of logged in user 
-        await fetch('http://127.0.0.1:8000/data/studymaterial_class_list/',{
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Token '+localStorage.getItem('token')
-            },
-        }).then((respone)=>respone.json())
-        .then(result =>{
-            console.log('obj result',result)
-            if (localStorage.getItem('email') === null){
-                window.location.reload()
-            }
-            this.setState({
-                obj: result.filter(function(value){return value.email === localStorage.getItem('email')})
-            })
+        // }
+        //fetching list of class that is link with logged in user
+        const studentuser = await fetch('http://127.0.0.1:8000/data/myclasses_list/'+this.state.usertoken[0].user_id)
+        const userjson = await studentuser.json()
+        console.log('classes related to user id 1', userjson)
+        this.setState({
+            obj: userjson
         })
         
         console.log('Token ', localStorage.getItem('token'))
-        // console.log('this is email haha', localStorage.getItem('email'))
+        console.log('this is email haha', localStorage.getItem('email'))
     }
     onHandleSubmit=()=>{
         //creating a new classroom
@@ -87,7 +77,19 @@ export default class Userdata extends Component {
             body:newclass
         }).then(response => response.json())
         .then(result =>{
-            console.log('success: ',result)
+            console.log('success: created class',result)
+            console.log(result.id)
+            console.log(this.state.usertoken[0].user_id)
+            const linkclassdata = new FormData()
+            linkclassdata.append('classroom_id',result.id)
+            linkclassdata.append('user_id', this.state.usertoken[0].user_id)
+            fetch('http://127.0.0.1:8000/data/myclasses_create/',{
+                method: 'POST',
+                body:linkclassdata
+            }).then(respone => respone.json())
+            .then(result =>{
+                console.log("setup is success")
+            })
         })
         .catch(error=>{
             console.log('error: ',error)
@@ -130,7 +132,6 @@ export default class Userdata extends Component {
             inClassroom: true,
             classid:id
         })
-        console.log('this is id re', id)
     }
     onGoBack =()=>{
         window.location.reload()
@@ -138,6 +139,7 @@ export default class Userdata extends Component {
     render() {
         const abc = this.onEnterRoom
         console.log('this is obj: ', this.state.obj)
+        console.log('this is testvariable', this.state.testvariable)
         const {newclassname} = this.state
         return (
             <div>

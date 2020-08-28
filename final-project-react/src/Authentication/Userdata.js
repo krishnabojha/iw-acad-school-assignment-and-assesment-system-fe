@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import ShowClassItem from './ShowClassItem'
 import './CreateClassForm.css'
-// import { Redirect } from 'react-router'
-// import { createHashHistory } from 'history'
 
 export default class Userdata extends Component {
     state = {
@@ -15,9 +13,16 @@ export default class Userdata extends Component {
         newclassname:'',
         inClassroom: false,
         classid:'',
-        testvariable: ''
+        displaymenu: false,
+        showmessage: false,
+        invitationlink: '',
+        classemail: '',
     }
     async componentDidMount() {
+        // check whether the link is referal or not
+        const urllink = window.location.href.split('/')
+        const urllistlength = urllink.length
+
         //fetching token to get user_id
         await fetch('http://127.0.0.1:8000/user/token/',{
             method: 'GET'
@@ -28,7 +33,7 @@ export default class Userdata extends Component {
                 usertoken: result.filter(function(item){return item.key === localStorage.getItem('token')}),
             })
         })
-       
+
         //fetching users to get email
         // if (this.state.emailStored === false) {
             await fetch('http://127.0.0.1:8000/user/list/',{
@@ -51,9 +56,7 @@ export default class Userdata extends Component {
             /// storing the email to the local storage
             localStorage.setItem('email',this.state.userobj[0].email)
         })
-        // this.setState({
-        //     emailStored: true
-        // })
+
         console.log('this is emailstored: ',this.state.emailStored)
         // }
         //fetching list of class that is link with logged in user
@@ -63,9 +66,23 @@ export default class Userdata extends Component {
         this.setState({
             obj: userjson
         })
-        
         console.log('Token ', localStorage.getItem('token'))
-        console.log('this is email haha', localStorage.getItem('email'))
+        // console.log('this is email haha', localStorage.getItem('email'))
+        // join as a student using referal link
+        if((urllink[urllistlength-1] !== undefined) && (urllink[urllistlength-2] === 'class') && (urllink[urllistlength-3] === 'join')){
+            console.log('you are joined to class using referal link')
+            console.log(parseInt(urllink[urllistlength-1]))
+            const linkclassdata = new FormData()
+            linkclassdata.append('classroom_id', parseInt(urllink[urllistlength-1]))
+            linkclassdata.append('user_id', this.state.usertoken[0].user_id)
+            fetch('http://127.0.0.1:8000/data/myclasses_create/',{
+                method: 'POST',
+                body:linkclassdata
+            }).then(respone => respone.json())
+            .then(result =>{
+                console.log("setup is success")
+            })
+        }
     }
     onHandleSubmit=()=>{
         //creating a new classroom
@@ -95,11 +112,13 @@ export default class Userdata extends Component {
             console.log('error: ',error)
         })
     }
+    //logout user by removing the token saved in browser
     onLogout =()=>{
         localStorage.removeItem('token')
         localStorage.removeItem('email')
         window.location.reload();
     }
+    //create new class
     onCreateClass =()=>{
         if(this.state.createClass === false){
             this.setState({
@@ -127,27 +146,68 @@ export default class Userdata extends Component {
             [event.target.name]: event.target.value
         })
     }
-    onEnterRoom =(id)=> {
+    // enter into the clicked class
+    onEnterRoom =(id, email)=> {
         this.setState({
             inClassroom: true,
-            classid:id
+            classid:id,
+            classemail: email,
+            invitationlink: 'http://localhost:3000/join/class/'+id  // use the valid url before /join while hosting
+
         })
+       
     }
     onGoBack =()=>{
         window.location.reload()
     }
+    onshowmenu =()=>{
+        if (this.state.displaymenu === false){
+            this.setState({
+                displaymenu:true
+            })
+        }
+        else{
+            this.setState({
+                displaymenu:false
+            })
+        }
+    }
+    onshowmessage = () =>{
+
+        if(this.state.showmessage === false){
+            navigator.clipboard.writeText(this.state.invitationlink)
+            this.setState({
+                showmessage: true,
+            })
+        }
+        else{
+            this.setState({
+                showmessage:false
+            })
+        }
+    }
+    onHideCopiedmessage = () =>{
+        this.setState({
+            showmessage:false
+        })
+    }
     render() {
         const abc = this.onEnterRoom
         console.log('this is obj: ', this.state.obj)
-        console.log('this is testvariable', this.state.testvariable)
+        console.log('this is copyed url', this.state.invitationlink)
+        console.log('this is email class', this.state.classemail)
         const {newclassname} = this.state
+        
         return (
             <div>
                  {/* side bar */}
-                 <div className = "side-bar">
-                    
+                <div className = "side-bar">
                 </div>
                 <div className = 'top-bar'>
+                    <div className = 'login-info' onClick = {this.onshowmenu}>
+                        <img src="https://img.icons8.com/material/40/000000/user-male-circle--v1.png" alt = ""/>                    
+                    </div>
+
                 {   
                 (this.state.inClassroom === true)?
                     <div className = 'back-arrow' title = 'goto back' onClick = {this.onGoBack}>
@@ -159,7 +219,11 @@ export default class Userdata extends Component {
                 
                 <div className = 'logout-btn'>
                     <button type = 'submit' onClick = {this.onCreateClass}>{this.state.createbtn}</button>
-                    <button onClick = {this.onLogout}>Logout</button>
+                    {   
+                        (this.state.inClassroom === true && (this.state.classemail === localStorage.getItem('email')))?
+                        <button className = "invite-btn" onClick = {this.onshowmessage} onMouseOutCapture = {this.onHideCopiedmessage}>Invite</button>
+                        :<p></p>
+                    }
                 </div>
 
                 {
@@ -176,7 +240,7 @@ export default class Userdata extends Component {
                 {  
                 (this.state.inClassroom === false)?
                     this.state.obj.map(function(item){
-                        return (<div className = "single-class" key = {item.id} onClick = {abc.bind(this,  item.id)}>
+                        return (<div className = "single-class" key = {item.id} onClick = {abc.bind(this,  item.id, item.email)}>
                          <h3>{item.classname}</h3>
                         <h3>{item.email}</h3>
                         </div>)
@@ -184,6 +248,21 @@ export default class Userdata extends Component {
                     : <ShowClassItem classid = {this.state.classid}></ShowClassItem>
                 }
                 </div>
+
+                {   (this.state.showmessage === true)?
+                    <div className = "invite-message">
+                        <p>Invitation code is copied !!!</p>
+                    </div>
+                    :<p></p>
+                }
+                {   (this.state.displaymenu === true)?
+                    <div class="vertical-menu">
+                        <div></div>
+                        <a>Profile</a>
+                        <a onClick = {this.onLogout}>Logout</a>
+                    </div>
+                    :<p></p>
+                }
             </div>
         )
     }

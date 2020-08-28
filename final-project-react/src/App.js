@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-// import SMaterialBlock from './Studycomponents/SMaterialBlock'
-// import UserLogin from './Authentication/UserLogin'
 import UserSignUp from './Authentication/UserSignup'
 import UserLogin from './Authentication/UserLogin'
 import Userdata from './Authentication/Userdata'
@@ -25,7 +23,7 @@ export default class App extends Component {
     })
   }
   render() {
-    
+    // check whether the token is present in browser or not and it's validity
     if (!localStorage.getItem('token') || localStorage.getItem('token').length <= 10 ) {
       return (
         <div>
@@ -34,7 +32,6 @@ export default class App extends Component {
             (this.state.registered === true )?
             <UserLogin showsignup = {this.showSignupForm}></UserLogin>
             :<UserSignUp showlogin = {this.showLoginForm}></UserSignUp>
-
           }
                       
           {/* <UserLogin></UserLogin> */}
@@ -46,6 +43,7 @@ export default class App extends Component {
       console.log('this is token', localStorage.getItem('token'))
       return(
         // <SMaterialBlock></SMaterialBlock>
+        
         <Userdata></Userdata>
       )
     }

@@ -42,7 +42,7 @@ export default class ItemBlock extends Component {
                     }
                     
                     </span>
-                    : <h1>sorry</h1>
+                    : <h2>Empty</h2>
                 }
                 </span>
                 

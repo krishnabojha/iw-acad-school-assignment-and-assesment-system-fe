@@ -8,7 +8,7 @@ export default class SMaterialBlock extends Component {
         study_data : [],
         items: [],
         show: 'all',
-        email: '',
+        emailobj: '',
         bgcolorall: 'rgb(54, 133, 235)',
         bgcolorfile: '',
         bgcolorvideo: ''
@@ -30,7 +30,7 @@ export default class SMaterialBlock extends Component {
             this.setState({
                 study_data,
                 items,
-                email: filtered_class[0]  // here the 3 is id of class
+                emailobj: filtered_class[0]  // here the 3 is id of class
             });
         } catch (e) {
             console.log(e);
@@ -77,12 +77,19 @@ export default class SMaterialBlock extends Component {
         
         return (
             <div className = "outer-div">
+                {/* {
+                    (this.state.emailobj.email === localStorage.getItem('email'))?
+                    <div>
+                        <img src="https://img.icons8.com/android/24/000000/link.png" alt = ""/>
+                    </div>
+                    :<p></p>
+                } */}
                 <h2 className = "study-material">Study Material</h2>
                 <div className = "nav">
                     <button onClick = {this.onClickAll} style = {{backgroundColor: this.state.bgcolorall}}>All</button>
                     <button onClick = {this.onClickFiles} style = {{backgroundColor: this.state.bgcolorfile}}>Files</button>
                     <button onClick = {this.onClickVideos} style = {{backgroundColor: this.state.bgcolorvideo}}>videos</button>
-                    <ItemBlock data = {this.state.email} ></ItemBlock>
+                    <ItemBlock data = {this.state.emailobj} ></ItemBlock>
                 </div>
                 <div className = 'study-content-div'>
                     

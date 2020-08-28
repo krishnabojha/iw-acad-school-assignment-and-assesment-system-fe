@@ -9,7 +9,7 @@ export default class ShowClassItem extends Component {
         const classId = this.props['classid']
         console.log('Class id : ', classId)
         return (
-            <div >
+            <div>
                 <SMaterialBlock classid = {classId}></SMaterialBlock>
             </div> 
         )

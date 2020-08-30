@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ShowClassItem from './ShowClassItem'
 import './CreateClassForm.css'
+import UserProfile from './UserProfile'
 
 export default class Userdata extends Component {
     state = {
@@ -17,6 +18,10 @@ export default class Userdata extends Component {
         showmessage: false,
         invitationlink: '',
         classemail: '',
+        userprofileobj: [],
+        showProfile: false,
+        userName: '',
+        fullname: '',
     }
     async componentDidMount() {
         // check whether the link is referal or not
@@ -52,7 +57,11 @@ export default class Userdata extends Component {
             this.setState({
                 userobj: result.filter(function(item){return item.id === usertoken[0]['user_id']})
             })
-            console.log('this is user email', this.state.userobj[0].email)
+            console.log('this is user name ho', this.state.userobj[0].username)
+            this.setState({
+                userName: this.state.userobj[0].username,
+                fullname: this.state.userobj[0].first_name + ' '+ this.state.userobj[0].last_name
+            })
             /// storing the email to the local storage
             localStorage.setItem('email',this.state.userobj[0].email)
         })
@@ -83,6 +92,23 @@ export default class Userdata extends Component {
                 console.log("setup is success")
             })
         }
+        //fetching profile of user from api
+        const porfile = await fetch('http://127.0.0.1:8000/data/userinfo_list/'+this.state.usertoken[0].user_id)
+        const userprofile = await porfile.json()
+        this.setState({
+            userprofileobj: userprofile[0]
+        })
+        console.log('this is userprofile', this.state.userprofileobj)
+        // creating user profile for logged in user
+        const newdata = new FormData()
+        newdata.append('userid', this.state.usertoken[0].user_id)
+        fetch('http://127.0.0.1:8000/data/userinfo_create/',{
+            method: 'POST',
+            body: newdata
+        }).then(response => response.json())
+        .then(result => {
+            console.log('this is created result', result)
+        })
     }
     onHandleSubmit=()=>{
         //creating a new classroom
@@ -157,9 +183,11 @@ export default class Userdata extends Component {
         })
        
     }
+    //goto previous page
     onGoBack =()=>{
         window.location.reload()
     }
+    //show profile and logout in menu
     onshowmenu =()=>{
         if (this.state.displaymenu === false){
             this.setState({
@@ -172,6 +200,7 @@ export default class Userdata extends Component {
             })
         }
     }
+    //show copied message on press of invite
     onshowmessage = () =>{
 
         if(this.state.showmessage === false){
@@ -191,11 +220,24 @@ export default class Userdata extends Component {
             showmessage:false
         })
     }
+    // show profile of user in cart
+    showProfileCart =()=>{
+        if(this.state.showProfile === false){
+            this.setState({
+                showProfile: true
+            })
+        }
+        else{
+            this.setState({
+                showProfile: false
+            })
+        }
+    }
     render() {
         const abc = this.onEnterRoom
-        console.log('this is obj: ', this.state.obj)
-        console.log('this is copyed url', this.state.invitationlink)
-        console.log('this is email class', this.state.classemail)
+        // console.log('this is obj: ', this.state.userobj[0])
+        // console.log('this is image pp', this.state.userprofileobj)
+        // console.log('this is email class', this.state.classemail)
         const {newclassname} = this.state
         
         return (
@@ -204,8 +246,13 @@ export default class Userdata extends Component {
                 <div className = "side-bar">
                 </div>
                 <div className = 'top-bar'>
+                    {/* profile picture of logged in user */}
                     <div className = 'login-info' onClick = {this.onshowmenu}>
-                        <img src="https://img.icons8.com/material/40/000000/user-male-circle--v1.png" alt = ""/>                    
+                        {
+                            (this.state.userprofileobj === undefined || this.state.userprofileobj.profileImg === null)?
+                            <img src="https://img.icons8.com/material/40/000000/user-male-circle--v1.png" alt = ""/>                    
+                            :<img src={this.state.userprofileobj.profileImg} alt = ""/>                    
+                        }
                     </div>
 
                 {   
@@ -256,11 +303,17 @@ export default class Userdata extends Component {
                     :<p></p>
                 }
                 {   (this.state.displaymenu === true)?
-                    <div class="vertical-menu">
+                    <div className="vertical-menu">
                         <div></div>
-                        <a>Profile</a>
+                        <a onClick = {this.showProfileCart}>Profile</a>
                         <a onClick = {this.onLogout}>Logout</a>
                     </div>
+                    :<p></p>
+                }
+
+                {
+                    (this.state.showProfile === true)?
+                    <UserProfile showProfile = {this.showProfileCart} userName = {this.state.userName} fullname = {this.state.fullname}  userprofile = {this.state.userprofileobj} ></UserProfile>
                     :<p></p>
                 }
             </div>

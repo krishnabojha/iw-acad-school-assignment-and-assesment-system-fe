@@ -51,6 +51,7 @@ export default class Userdata extends Component {
         .then(result =>{
             const {usertoken} = this.state
             console.log('this is result: before',usertoken[0].user_id)
+            localStorage.setItem('UserId', usertoken[0].user_id)
             if (usertoken[0] === undefined){
                 window.location.reload()
             }
@@ -141,7 +142,7 @@ export default class Userdata extends Component {
     //logout user by removing the token saved in browser
     onLogout =()=>{
         localStorage.removeItem('token')
-        localStorage.removeItem('email')
+        // localStorage.removeItem('email')
         window.location.reload();
     }
     //create new class

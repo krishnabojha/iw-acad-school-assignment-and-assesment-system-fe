@@ -46,17 +46,22 @@ label{
     margin-top: 10px;
     font-size: 15px;
     cursor: pointer;
+    color: rgb(70, 70, 236);
 }
 .create-acc{
     font-size: 13px;
     color: rgb(11, 151, 245);
     cursor: pointer;
 }
-
+.btn-section{
+    display: block;
+}
 .signin-form button{
     margin-top: 8px;
     width: 25%;
     height: 30px;
+    margin-left: 2px;
+    margin-right: 2px;
     border-radius: 12px;
     background-color: white;
     border: none;

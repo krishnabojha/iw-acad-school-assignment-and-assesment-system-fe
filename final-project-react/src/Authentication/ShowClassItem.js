@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import '../Authentication/CreateClassForm.css'
 import SMaterialBlock from '../Studycomponents/SMaterialBlock'
+import BasePage from '../Assignment/BasePage'
 
 
 export default class ShowClassItem extends Component {
@@ -11,6 +12,7 @@ export default class ShowClassItem extends Component {
         return (
             <div>
                 <SMaterialBlock classid = {classId}></SMaterialBlock>
+                <BasePage classid = {classId}></BasePage>
             </div> 
         )
     }

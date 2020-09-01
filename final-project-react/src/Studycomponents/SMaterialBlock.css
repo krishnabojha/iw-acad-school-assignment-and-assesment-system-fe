@@ -10,12 +10,12 @@ body{
 
 }
 .outer-div{
-    width: 30%;
+    width: 40%;
     height: 85vh;
     border-radius: 10px;
     background-color: rgb(248, 238, 238);
     position: absolute;
-    left: 40%;
+    left: 0%;
     top:10px
 }
 .study-material{
@@ -80,10 +80,7 @@ body{
     padding-top: 2%;
     padding-right: 2%;
 }
-/* .referallink-div {
-    position: relative;
-    z-index: -20;
-    margin-left: 300px;
-    background-color: aqua;
-} */
+.content{
+    cursor: pointer;
+}
 

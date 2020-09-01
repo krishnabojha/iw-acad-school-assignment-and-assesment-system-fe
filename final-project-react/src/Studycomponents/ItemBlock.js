@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './SMaterialBlock.css'
 import SMaterialForm from './SMaterialForm'
+import CreateAssignment from '../Assignment/CreateAssignment'
 
 export default class ItemBlock extends Component {
     state = {
@@ -27,6 +28,7 @@ export default class ItemBlock extends Component {
     }
     render() {
         const myclassObj = this.props['data']
+        const creatAssignment = this.props['assignmentCreate']
         // console.log('this is user email', this.state.myemail)
         // console.log('my class email id ', myclassObj['email'])
             return (
@@ -37,12 +39,14 @@ export default class ItemBlock extends Component {
                     <img src="https://img.icons8.com/flat_round/50/000000/plus.png" onClick = {() => this.onClickAdd()} alt = ""/>
                     {
                         (this.state.displayform === true)
-                        ? <SMaterialForm onHideForm = {this.onHideForm} myclassid = {myclassObj['id']}></SMaterialForm>
+                        ? (creatAssignment === false)?
+                         <SMaterialForm onHideForm = {this.onHideForm} myclassid = {myclassObj['id']}></SMaterialForm>
+                         :<CreateAssignment onHideForm = {this.onHideForm} myclassid = {myclassObj['id']}></CreateAssignment>
                         : <p></p>
                     }
                     
                     </span>
-                    : <h2>Empty</h2>
+                    : <p></p>
                 }
                 </span>
                 

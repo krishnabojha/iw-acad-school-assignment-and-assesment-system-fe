@@ -22,7 +22,8 @@ form h2{
 }
 form label{
     top: 30px;
-    font-family: Verdana;    
+    font-family: Verdana;
+    margin-left: 4%;
 
 }
 form .textinput{

@@ -10,9 +10,17 @@ export default class UserProfile extends Component {
         showsubmitbtn: false,
         content: 'this is bio data',
         userdetail: [],
-        address: 'kathmandu',
-        bio: 'student',
+        address: 'Address',
+        bio: 'Bio',
         profileImg: ''
+    }
+
+    componentDidMount =()=>{
+        console.log('address',this.props['userprofile'].address)
+        this.setState({
+            address: this.props['userprofile'].address,
+            bio: this.props['userprofile'].bio
+        })
     }
 // submit the edited content
     onhandleSubmit =(event)=>{

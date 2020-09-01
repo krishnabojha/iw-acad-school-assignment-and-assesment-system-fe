@@ -8,7 +8,7 @@
     font-family: arial;
     position: absolute;
     margin-left: 40%;
-    margin-top: 40px;
+    margin-top: 60px;
     background-color: rgb(223, 227, 236);
     border-radius: 5px;
   }
@@ -17,8 +17,8 @@
   }
   .capture-img{
     position: absolute;
-    margin-top: 80px;
-    margin-left: 50%;
+    margin-top: 75px;
+    margin-left: 60%;
     border-radius: 7px;
   }
   .capture-img:hover{
@@ -86,3 +86,42 @@
  .none-submit{
      padding-top: 8px;
  }
+
+
+
+@media screen and (max-width: 1230px){
+  .card {
+    width: 25%;
+  }
+
+}
+
+@media screen and (max-width: 990px){
+  .card {
+    width: 35%;
+  }
+
+}
+
+@media screen and (max-width: 725px){
+  .card {
+    width: 45%;
+  }
+
+}
+
+@media screen and (max-width: 565px){
+  .card {
+    width: 60%;
+    margin-left: 40px;
+  }
+
+}
+
+@media screen and (max-width: 425px){
+  .card {
+    width: 75%;
+    margin-left: 40px;
+  }
+
+}

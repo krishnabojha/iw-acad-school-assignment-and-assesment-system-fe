@@ -166,3 +166,34 @@ body{
     margin-left: 80%;
 }
 /* vertical menu end */
+
+
+
+@media screen and (max-width: 1005px){
+    .create-class-form{
+        width: 20%;
+    }
+
+}
+
+@media screen and (max-width: 746px){
+    .create-class-form{
+        width: 25%;
+    }
+
+}
+
+@media screen and (max-width: 618px){
+    .create-class-form{
+        width: 30%;
+    }
+
+}
+
+@media screen and (max-width: 515px){
+    .create-class-form{
+        width: 50%;
+        margin-top: 50px;
+    }
+
+}

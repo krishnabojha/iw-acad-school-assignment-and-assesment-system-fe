@@ -173,12 +173,18 @@ body{
     .create-class-form{
         width: 20%;
     }
+    .vertical-menu {
+        margin-left: 87%;
+    }
 
 }
 
 @media screen and (max-width: 746px){
     .create-class-form{
         width: 25%;
+    }
+    .vertical-menu {
+        margin-left: 83%;
     }
 
 }
@@ -187,6 +193,9 @@ body{
     .create-class-form{
         width: 30%;
     }
+    .vertical-menu {
+        margin-left: 80%;
+    }
 
 }
 
@@ -194,6 +203,9 @@ body{
     .create-class-form{
         width: 50%;
         margin-top: 50px;
+    }
+    .vertical-menu {
+        margin-left: 75%;
     }
 
 }

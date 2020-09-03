@@ -11,7 +11,8 @@ export default class SMaterialBlock extends Component {
         emailobj: '',
         bgcolorall: 'rgb(54, 133, 235)',
         bgcolorfile: '',
-        bgcolorvideo: ''
+        bgcolorvideo: '',
+        assignmentCreate: false,
 
     };
     async componentDidMount() {
@@ -74,7 +75,7 @@ export default class SMaterialBlock extends Component {
      })
     }
     render() {
-        
+        console.log('SMT', this.state.items)
         return (
             <div className = "outer-div">
                 {/* {
@@ -89,7 +90,7 @@ export default class SMaterialBlock extends Component {
                     <button onClick = {this.onClickAll} style = {{backgroundColor: this.state.bgcolorall}}>All</button>
                     <button onClick = {this.onClickFiles} style = {{backgroundColor: this.state.bgcolorfile}}>Files</button>
                     <button onClick = {this.onClickVideos} style = {{backgroundColor: this.state.bgcolorvideo}}>videos</button>
-                    <ItemBlock data = {this.state.emailobj} ></ItemBlock>
+                    <ItemBlock data = {this.state.emailobj} assignmentCreate = {this.state.assignmentCreate}></ItemBlock>
                 </div>
                 <div className = 'study-content-div'>
                     
@@ -97,18 +98,18 @@ export default class SMaterialBlock extends Component {
                         this.state.items.reverse().map(studyobject =>{
                             // display content having only videos
                             if (this.state.show === 'video'|| studyobject.file_title === ''){
-                                return <ItemComponent linkObject = {studyobject.videos} imgsrc = {'https://img.icons8.com/fluent/48/000000/video.png'} title = {studyobject.video_title} key = {studyobject.id}></ItemComponent>
+                                return <ItemComponent linkObject = {studyobject.videos} imgsrc = {'https://img.icons8.com/fluent/48/000000/video.png'} title = {studyobject.video_title} created_time = {studyobject.created_at.split('T')[0]} key = {studyobject.id}></ItemComponent>
                             }
                             // displaying content having only files
                             else if(this.state.show === 'file' || studyobject.video_title === ''){
-                                return <ItemComponent linkObject = {studyobject.files} imgsrc = {'https://img.icons8.com/cute-clipart/48/000000/file.png'} title = {studyobject.file_title} key = {studyobject.id}></ItemComponent>
+                                return <ItemComponent linkObject = {studyobject.files} imgsrc = {'https://img.icons8.com/cute-clipart/48/000000/file.png'} title = {studyobject.file_title} created_time = {studyobject.created_at.split('T')[0]} key = {studyobject.id}></ItemComponent>
                             }
                             // displaying content having both files and videos
                             else if(this.state.show ==='all' || (studyobject.video_title !== '' && studyobject.file_title !== '')) {
                                 return(
                                     <span key = {studyobject.id}>
-                                        <ItemComponent linkObject = {studyobject.videos} imgsrc = {'https://img.icons8.com/fluent/48/000000/video.png'} title = {studyobject.video_title}></ItemComponent>
-                                        <ItemComponent linkObject = {studyobject.files}  imgsrc = {"https://img.icons8.com/cute-clipart/48/000000/file.png"} title = {studyobject.file_title}></ItemComponent>
+                                        <ItemComponent linkObject = {studyobject.videos} imgsrc = {'https://img.icons8.com/fluent/48/000000/video.png'} title = {studyobject.video_title} created_time = {studyobject.created_at.split('T')[0]}></ItemComponent>
+                                        <ItemComponent linkObject = {studyobject.files}  imgsrc = {"https://img.icons8.com/cute-clipart/48/000000/file.png"} title = {studyobject.file_title} created_time = {studyobject.created_at.split('T')[0]}></ItemComponent>
                                     </span>       
                                 );
                             }

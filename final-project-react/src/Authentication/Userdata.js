@@ -165,7 +165,7 @@ export default class Userdata extends Component {
                 createbtn: 'Create Class'
             })
             this.onHandleSubmit()
-            window.location.reload()
+            /* window.location.reload() */
         }
     }
     onChangeInput =(event)=>{

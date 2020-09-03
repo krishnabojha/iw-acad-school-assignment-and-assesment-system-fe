@@ -100,16 +100,7 @@ export default class Userdata extends Component {
             userprofileobj: userprofile[0]
         })
         console.log('this is userprofile', this.state.userprofileobj)
-        // creating user profile for logged in user
-        const newdata = new FormData()
-        newdata.append('userid', this.state.usertoken[0].user_id)
-        fetch('http://127.0.0.1:8000/data/userinfo_create/',{
-            method: 'POST',
-            body: newdata
-        }).then(response => response.json())
-        .then(result => {
-            console.log('this is created result', result)
-        })
+      
     }
     onHandleSubmit=()=>{
         //creating a new classroom
@@ -129,7 +120,7 @@ export default class Userdata extends Component {
                 body:linkclassdata
             }).then(respone => respone.json())
             .then(result =>{
-                console.log("setup is success")
+                console.log("setup is success", result)
             })
         })
         .catch(error=>{
@@ -175,7 +166,7 @@ export default class Userdata extends Component {
                 createbtn: 'Create Class'
             })
             this.onHandleSubmit()
-            window.location.reload()
+            // window.location.reload()
         }
     }
     onChangeInput =(event)=>{

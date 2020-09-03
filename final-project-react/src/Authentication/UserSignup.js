@@ -29,6 +29,16 @@ export default class UserSignup extends Component {
                 ).then((response) =>response.json())
                 .then((result)=>{
                     console.log('success', result)
+                    // creating user profile for logged in user
+                        const newdata = new FormData()
+                        newdata.append('userid', result.id)
+                        fetch('http://127.0.0.1:8000/data/userinfo_create/',{
+                            method: 'POST',
+                            body: newdata
+                        }).then(response => response.json())
+                        .then(result => {
+                            console.log('this is created result', result)
+                        })
                     this.props.showlogin()
                 })
                 .catch((error)=>{

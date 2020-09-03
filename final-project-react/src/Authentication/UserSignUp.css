@@ -20,7 +20,7 @@ body{
     display: inline-block;
     padding-bottom: 2%;
 }
-label{
+.signup-form label{
     display: block;
     float: left;
     margin-left:15% ;

@@ -19,7 +19,7 @@ body{
     display: inline-block;
     padding-bottom: 1%;
 }
-label{
+.signin-form label{
     display: block;
     float: left;
     margin-left:15% ;

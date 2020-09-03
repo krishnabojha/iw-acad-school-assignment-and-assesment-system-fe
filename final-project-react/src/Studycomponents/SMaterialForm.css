@@ -1,4 +1,4 @@
-/* Study material entry form */
+/* Study material entry form and create assignment */
 /* outer div of form start */
 
 .study-entry-form{
@@ -10,6 +10,7 @@
     position: absolute;
     padding-bottom: 3%;
     padding-top: 1%;
+    z-index: 1;
 }
 /* outer div of form end */
 /* input form start */
@@ -24,6 +25,7 @@ form label{
     top: 30px;
     font-family: Verdana;
     margin-left: 4%;
+    float: left;
 
 }
 form .textinput{
@@ -52,3 +54,4 @@ form input[type = text]:focus{
     font-size: 15px;
 }
 /* submit btn and clear btn end */
+

@@ -121,9 +121,6 @@ export default class Userdata extends Component {
             body:newclass
         }).then(response => response.json())
         .then(result =>{
-            console.log('success: created class',result)
-            console.log(result.id)
-            console.log(this.state.usertoken[0].user_id)
             const linkclassdata = new FormData()
             linkclassdata.append('classroom_id',result.id)
             linkclassdata.append('user_id', this.state.usertoken[0].user_id)
@@ -138,6 +135,19 @@ export default class Userdata extends Component {
         .catch(error=>{
             console.log('error: ',error)
         })
+    }
+    // delete class by user
+    onDeleteClass = (event) =>{
+        fetch('http://127.0.0.1:8000/data/studymaterial_class_delete/'+this.state.classid,{
+            method:'DELETE'
+        }).then(response=>response.json())
+        .then(result=>{
+            console.log('result class delete:', result)
+        }).then(error=>{
+            console.log('error class delete:',error)
+        })
+        event.preventDefault();
+        window.location.reload()
     }
     //logout user by removing the token saved in browser
     onLogout =()=>{
@@ -236,9 +246,6 @@ export default class Userdata extends Component {
     }
     render() {
         const abc = this.onEnterRoom
-        // console.log('this is obj: ', this.state.userobj[0])
-        // console.log('this is image pp', this.state.userprofileobj)
-        // console.log('this is email class', this.state.classemail)
         const {newclassname} = this.state
         
         return (
@@ -308,6 +315,11 @@ export default class Userdata extends Component {
                         <div></div>
                         <a onClick = {this.showProfileCart}>Profile</a>
                         <a onClick = {this.onLogout}>Logout</a>
+                        {
+                            (this.state.inClassroom === true && (this.state.classemail === localStorage.getItem('email')))?
+                            <a onClick = {this.onDeleteClass}>Delete Class</a>
+                            :<p></p>
+                        }
                     </div>
                     :<p></p>
                 }

@@ -38,7 +38,7 @@ export default class SMaterialForm extends Component {
         console.error('Error:', error);
         });
         // hide the form after submiting the data
-        // this.props.onHideForm()
+        this.props.onHideForm()
         }
         event.preventDefault();
         
@@ -69,11 +69,11 @@ export default class SMaterialForm extends Component {
             <div className = 'study-entry-form' style = {{display:"inline"}}>
                         <form>
                             <h2>Create Assignment: </h2>
-                            <label>Enter Question title : </label><br></br>
+                            <label className = 'label'>Enter Question title : </label><br></br>
                             <input type = "text" className = "textinput" name = 'file_title' value = {file_title} onChange = {this.onInputChange}></input><br></br>
-                            <label>Upload file:</label>
+                            <label className = 'label'>Upload file:</label>
                             <input type = "file" className = 'assignmentfileinput' name = 'files' onChange = {this.onInputFilesChange}></input><br></br>
-                            <label>Due Time:</label><br></br>
+                            <label className = 'label'>Due Time:</label><br></br>
                             <input type = "date" className = "textinput" name = 'due_time' value = {due_time} onChange = {this.onInputChange}></input>
                             <button type = "submit" className = "btn" onClick = {this.handleSubmit}>Submit</button>
                             <button type = 'submit' className = "btn" onClick = {this.onClickCancel}>Cancel</button>

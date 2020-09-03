@@ -25,7 +25,9 @@ export default class UserLogin extends Component {
         ).then((response) =>response.json())
         .then((result)=>{
             console.log('success', result)
-            console.log('this is token: ', result.token)
+            if(result.token === undefined){
+                alert('Enter Correct Password')
+            }
             localStorage.setItem('token',result.token)
             if(result.token.length >=15 && result.token !== undefined){
                 window.location.reload()

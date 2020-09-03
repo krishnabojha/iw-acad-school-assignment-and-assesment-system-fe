@@ -41,7 +41,6 @@ export default class UserProfile extends Component {
             window.location.reload()
         })
         
-
     }
     onChangeInfo =(event) =>{
         this.setState({

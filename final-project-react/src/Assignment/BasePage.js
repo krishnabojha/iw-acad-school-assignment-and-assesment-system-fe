@@ -4,6 +4,7 @@ import '../Studycomponents/SMaterialBlock.css'
 import ItemBlock from '../Studycomponents/ItemBlock';
 import ItemComponent from '../Studycomponents/ItemComponent';
 import AssignmentPage from './AssignmentPage';
+import CheckAnswer from './CheckAnswer';
 
 export default class BasePage extends Component {
     state = {
@@ -51,6 +52,7 @@ export default class BasePage extends Component {
          })
      }
     render() {
+        console.log('dsfsfaaa',this.state.assignment_id)
         return (
             <div className = "assignment-div">
                 <h2 className = "assignment-header">Assignment</h2>
@@ -68,8 +70,10 @@ export default class BasePage extends Component {
                 </div>
                 <div className = "assignmentpage">
                 {
-                    (this.state.showassignmentpage === true)?
-                    <AssignmentPage assignment = {this.state.assignment_id} assignmentPage = {this.onHideAssignmentPage}></AssignmentPage>
+                    (this.state.showassignmentpage === true && (this.state.emailobj !== localStorage.getItem('email')))?
+                        (this.state.emailobj.email === localStorage.getItem('email'))?
+                            <CheckAnswer assignment = {this.state.assignment_id} assignmentPage = {this.onHideAssignmentPage}></CheckAnswer>
+                            :<AssignmentPage assignment = {this.state.assignment_id} assignmentPage = {this.onHideAssignmentPage}></AssignmentPage>
                     :<p></p>
                 }
                 </div>

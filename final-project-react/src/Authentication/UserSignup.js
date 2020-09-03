@@ -20,24 +20,29 @@ export default class UserSignup extends Component {
         formdata.append('username', this.state.username)
         formdata.append('email', this.state.email)
         formdata.append('password', this.state.password)
-        if (this.state.password === this.state.Cpassword) {
-            fetch('http://127.0.0.1:8000/user/create/', {
-            method: 'POST',
-            body: formdata
+        if(this.state.password.length >7){
+            if (this.state.password === this.state.Cpassword) {
+                fetch('http://127.0.0.1:8000/user/create/', {
+                method: 'POST',
+                body: formdata
+                }
+                ).then((response) =>response.json())
+                .then((result)=>{
+                    console.log('success', result)
+                    this.props.showlogin()
+                })
+                .catch((error)=>{
+                    console.error('Error:',error)
+                })
             }
-            ).then((response) =>response.json())
-            .then((result)=>{
-                console.log('success', result)
-                this.props.showlogin()
-            })
-            .catch((error)=>{
-                console.error('Error:',error)
-            })
+            else{
+                this.setState({
+                    passMatch: 'block'
+                })
+            }
         }
         else{
-            this.setState({
-                passMatch: 'block'
-            })
+            alert('Use more than 8 character in password')
         }
         event.preventDefault();
 

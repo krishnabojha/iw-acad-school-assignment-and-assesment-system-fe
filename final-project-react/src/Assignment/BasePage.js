@@ -52,7 +52,6 @@ export default class BasePage extends Component {
          })
      }
     render() {
-        console.log('dsfsfaaa',this.state.assignment_id)
         return (
             <div className = "assignment-div">
                 <h2 className = "assignment-header">Assignment</h2>

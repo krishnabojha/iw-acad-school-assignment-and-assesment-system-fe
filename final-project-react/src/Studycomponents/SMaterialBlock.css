@@ -10,12 +10,12 @@ body{
 
 }
 .outer-div{
-    width: 40%;
+    width: 10%;
     height: 85vh;
     border-radius: 10px;
     background-color: rgb(248, 238, 238);
     position: absolute;
-    left: 0%;
+    /* left: -15%; */
     top:10px
 }
 .study-material{
@@ -84,3 +84,19 @@ body{
     cursor: pointer;
 }
 
+@media screen and (max-width: 1225px){
+    .outer-div{
+        position: absolute;
+        border: 2px solid black;
+      
+    }
+
+}
+@media screen and (max-width: 770px){
+    .outer-div{
+        width: 80%! important;
+        margin-left: 10%;
+      
+    }
+
+}

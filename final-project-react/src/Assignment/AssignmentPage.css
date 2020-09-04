@@ -76,3 +76,37 @@
 .grade{
     font-size: 20px;
 }
+
+@media screen and (max-width:1025px){
+    .assignment-page{
+        margin-top: -850px;
+        height: 40vh;
+    }
+}
+@media screen and (max-width:770px){
+    .assignment-page{
+        width: 110%;
+        margin-top: -550px;
+        height: 50vh;
+        margin-left: -5%;
+    }
+}
+@media screen and (max-width:455px){
+    .assignment-page{
+        height: 40vh;
+    }
+}
+@media screen and (max-width:380px){
+    .assignment-page{
+        height: 50vh;
+    }
+    .question-message{
+        margin-top: 12px;
+        font-size: 15px;
+    }
+}
+@media screen and (max-width:325px){
+    .assignment-page{
+        height: 60vh;
+    }
+}

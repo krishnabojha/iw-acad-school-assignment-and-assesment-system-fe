@@ -64,12 +64,12 @@ body{
 }
 /* top bar ends */
 /* side bar start */
-.side-bar{
+/* .side-bar{
     height: 100vh;
     width: 6%;
     background-color: blueviolet;
     position: absolute;
-}
+} */
 /* side bar ends */
 /* create class form start */
 .create-class-form{
@@ -91,24 +91,31 @@ body{
 }
 /* create class form ends */
 /* class container start */
+
 .classes-div{
+    display: grid;
+    width: 546px;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    align-items: start;
+    justify-content: space-between;
+    grid-gap: 10px 2em;
     position: absolute;
     margin-left: 8%;
-    margin-right: 3%;
-    width: 80%;
     margin-top: 50px;
-    display: flex;
 }
 /* class container ends */
 /* individual class start */
 .single-class{
-    margin-top: 20px;
+    margin-top: 20%;
     height: 20vh;
-    width: 30%;
-    padding-top: 10%;
+    width: 200px;
+    height: 150px;
     margin-right: 1%;
     background-color: gray;
     cursor: pointer;
+}
+.single-class h3{
+    margin-top: 25%;
 }
 .single-class:hover{
     background-color: burlywood;
@@ -167,3 +174,83 @@ body{
     margin-left: 80%;
 }
 /* vertical menu end */
+
+
+
+@media screen and (max-width: 1025px){
+    .create-class-form{
+        width: 20%;
+    }
+    .vertical-menu {
+        margin-left: 85%;
+    }
+    .classes-div{
+        grid-template-columns: 1fr 1fr 1fr;
+        width: 75%;
+        margin-top: 70px;
+        margin-left: 1%;
+    }
+    .single-class{
+        width: 300px;
+    }
+
+    
+}
+
+@media screen and (max-width: 770px){
+    .create-class-form{
+        width: 25%;
+        position: absolute;
+        margin-left: 25%;
+    }
+    .vertical-menu {
+        margin-left: 83%;
+    }
+    .classes-div{
+        grid-template-columns: 1fr 1fr;
+        width: 99%;
+    }
+   .single-class{
+        margin-top: 6%;
+        margin-left: 20%;
+        width: 250px;
+    }
+    .assignment-block{
+        margin-top: 90%;
+    }
+    .top-bar{
+        position: fixed;
+        z-index: 1;
+    }
+}
+
+@media screen and (max-width: 515px){
+    .create-class-form{
+        width: 50%;
+        margin-top: 50px;
+    }
+    .vertical-menu {
+        margin-left: 75%;
+    }
+   
+}
+
+@media screen and (max-width: 455px){
+    .create-class-form{
+        width: 30%;
+    }
+    .vertical-menu {
+        margin-left: 85%;
+    }
+    .classes-div{
+        grid-template-columns: 1fr;
+        width: 99%;
+    }
+
+}
+
+@media screen and (max-width: 361px){
+    .vertical-menu {
+        margin-left: 75%;
+    }
+}

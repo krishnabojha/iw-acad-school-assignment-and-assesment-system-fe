@@ -67,3 +67,33 @@ body{
     font-size: 12px;
     color: red;
 }
+
+
+@media screen and (max-width: 768px){
+    .signup-form{
+        width: 40%;
+        padding-top: 2%;
+        padding-bottom: 2%;
+    }
+
+}
+
+@media screen and (max-width: 525px){
+    .signup-form{
+        width: 50%;
+        padding-top: 2%;
+        padding-bottom: 2%;
+        margin-top: 5%;
+    }
+
+}
+
+@media screen and (max-width: 400px){
+    .signup-form{
+        width: 60%;
+        padding-top: 2%;
+        padding-bottom: 2%;
+        margin-top: 10%;
+    }
+
+}

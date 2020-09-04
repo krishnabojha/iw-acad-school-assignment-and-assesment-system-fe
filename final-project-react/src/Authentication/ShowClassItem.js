@@ -10,9 +10,13 @@ export default class ShowClassItem extends Component {
         const classId = this.props['classid']
         console.log('Class id : ', classId)
         return (
-            <div>
-                <SMaterialBlock classid = {classId}></SMaterialBlock>
-                <BasePage classid = {classId}></BasePage>
+            <div className = 'basePage-div'>
+                <div className = 'studyMaterial-block'>
+                    <SMaterialBlock classid = {classId}></SMaterialBlock>
+                </div>
+                <div className = 'assignment-block'>
+                    <BasePage classid = {classId}></BasePage>
+                </div>
             </div> 
         )
     }

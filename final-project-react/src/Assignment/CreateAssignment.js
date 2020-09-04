@@ -66,7 +66,7 @@ export default class SMaterialForm extends Component {
         // importing the variable form the state
         const {file_title, due_time} = this.state
         return (
-            <div className = 'study-entry-form' style = {{display:"inline"}}>
+            <div className = 'assignment-entry-form' style = {{display:"inline"}}>
                         <form>
                             <h2>Create Assignment: </h2>
                             <label className = 'label'>Enter Question title : </label><br></br>

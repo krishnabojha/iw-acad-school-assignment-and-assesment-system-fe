@@ -71,3 +71,35 @@ body{
     color: white;
     outline: none;
 }
+
+
+@media screen and (max-width: 768px){
+    .signin-form{
+        width: 40%;
+        /* height: 85vh; */
+        padding-top: 2%;
+        padding-bottom: 2%;
+    }
+
+}
+
+@media screen and (max-width: 600px){
+    .signin-form{
+        width: 50%;
+        /* height: 85vh; */
+        padding-top: 2%;
+        padding-bottom: 2%;
+    }
+
+}
+
+@media screen and (max-width: 425px){
+    .signin-form{
+        margin-top: 50px;
+        width: 60%;
+        /* height: 85vh; */
+        padding-top: 2%;
+        padding-bottom: 2%;
+    }
+
+}

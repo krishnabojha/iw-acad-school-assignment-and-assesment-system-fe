@@ -10,6 +10,7 @@
     position: absolute;
     padding-bottom: 3%;
     padding-top: 1%;
+    margin-left: -40%;
     z-index: 1;
 }
 /* outer div of form end */
@@ -55,3 +56,17 @@ form input[type = text]:focus{
 }
 /* submit btn and clear btn end */
 
+.assignment-entry-form{
+    background: rgb(212, 205, 205);
+    border-radius: 5px;
+    width: 90%;
+    height: 300px;
+    display: block;
+    position: absolute;
+    padding-bottom: 3%;
+    padding-top: 1%;
+    margin-left: -40%;
+}
+.assignment-entry-form form{
+    padding-left: 5%;   
+}

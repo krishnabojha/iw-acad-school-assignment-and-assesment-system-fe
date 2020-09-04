@@ -3,9 +3,9 @@
     padding: 0;
 }
 .assignment-div{
-    width: 40%;
+    width: 60%;
     height: 85vh;
-    margin-left: 50%;
+    margin-left: 125%;
     top: 10px;
     position: absolute;
     background-color: rgb(248, 238, 238);
@@ -28,4 +28,87 @@
 .assignment-content-div{
     height: 82%;
     overflow-y: auto;
+}
+
+
+@media screen and (max-width: 1217px){
+    .outer-div{
+        width: 60%;
+        padding-right: 0px;
+    }
+    .assignment-div{
+        width: 60%;
+        margin-left: 100%;
+    }
+
+}
+
+@media screen and (max-width: 1060px){
+    .outer-div{
+        width: 60%;
+        padding-right: 7px;
+        margin-left: 25px;
+    }
+    .assignment-div{
+        width: 60%;
+        margin-left: 68%;
+        border: 2px solid black;
+    }
+}
+
+@media screen and (max-width: 860px){
+    .outer-div{
+        /* width: 100%; */
+        height: 60vh;
+        /* padding-right: 7px; */
+        margin-left: 8%! important;
+    }
+    .assignment-div{
+        margin-left: 8%! important;
+        height: 60vh;
+        width: 80%! important;
+        /* position: relative; */
+        margin-top: 93%! important;
+        margin-bottom: 2vh;
+    }
+}
+
+@media screen and (max-width: 770px){
+    .outer-div{
+        width: 50%;
+        padding-right: 7px;
+        margin-left: 50px;
+    }
+    .assignment-div{
+        width: 50%;
+        margin-left: 55%;
+    }
+}
+
+@media screen and (max-width: 485px){
+    .outer-div{
+        width: 80%! important;
+        height: 60vh;
+        margin-top: 0%! important;
+        /* padding-right: 7px; */
+        margin-left: 8%! important;
+    }
+    .assignment-div{
+        margin-left: 8%! important;
+        height: 60vh;
+        width: 80%! important;
+        /* position: relative; */
+        margin-top: 65vh! important;
+    }
+
+}
+
+@media screen and (max-width: 380px){
+    .outer-div{
+        height: 60vh;
+    }
+    .assignment-div{
+        margin-top: 62vh! important;
+        height: 50vh;
+    }
 }

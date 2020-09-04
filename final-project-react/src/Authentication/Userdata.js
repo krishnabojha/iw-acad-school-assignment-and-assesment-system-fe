@@ -240,10 +240,10 @@ export default class Userdata extends Component {
         const {newclassname} = this.state
         
         return (
-            <div>
+            <div className = "most-outer-div">
                  {/* side bar */}
-                <div className = "side-bar">
-                </div>
+                {/* <div className = "side-bar">
+                </div> */}
                 <div className = 'top-bar'>
                     {/* profile picture of logged in user */}
                     <div className = 'login-info' onClick = {this.onshowmenu}>
@@ -288,7 +288,7 @@ export default class Userdata extends Component {
                     this.state.obj.map(function(item){
                         return (<div className = "single-class" key = {item.id} onClick = {abc.bind(this,  item.id, item.email)}>
                          <h3>{item.classname}</h3>
-                        <h3>{item.email}</h3>
+                        {/* <h3>{item.email}</h3> */}
                         </div>)
                     })
                     : <ShowClassItem classid = {this.state.classid}></ShowClassItem>

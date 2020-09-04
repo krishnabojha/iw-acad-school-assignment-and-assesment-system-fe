@@ -1,0 +1,111 @@
+/* assignment block styling */
+*{
+    margin: 0;
+    padding: 0;
+}
+.assignment-div{
+    width: 60%;
+    height: 85vh;
+    margin-left: 125%;
+    top: 10px;
+    position: absolute;
+    background-color: rgb(248, 238, 238);
+    border-radius: 10px;
+    
+}
+.assignment-header{
+    margin-top: 2px;
+}
+.assignment-nav{
+    padding-top: 20px;
+}
+.assignment-nav img{
+    width: 35px;
+    height: 35px;
+    margin-top: -20px;
+    position: absolute;
+    left: 85%;
+}
+.assignment-content-div{
+    height: 82%;
+    overflow-y: auto;
+}
+
+
+@media screen and (max-width: 1217px){
+    .outer-div{
+        width: 60%;
+        padding-right: 0px;
+    }
+    .assignment-div{
+        width: 60%;
+        margin-left: 100%;
+    }
+
+}
+
+@media screen and (max-width: 1060px){
+    .outer-div{
+        width: 60%;
+        padding-right: 7px;
+        margin-left: 25px;
+        border: 2px solid black;
+    }
+    .assignment-div{
+        width: 60%;
+        margin-left: 68%;
+        border: 2px solid black;
+    }
+}
+
+@media screen and (max-width: 860px){
+    .outer-div{
+        height: 60vh;
+        margin-left: 8%! important;
+    }
+    .assignment-div{
+        margin-left: 8%! important;
+        height: 60vh;
+        width: 80%! important;
+        margin-top: 93%! important;
+        margin-bottom: 2vh;
+    }
+}
+
+@media screen and (max-width: 770px){
+    .outer-div{
+        width: 50%;
+        padding-right: 7px;
+        margin-left: 50px;
+    }
+    .assignment-div{
+        width: 50%;
+        margin-left: 55%;
+    }
+}
+
+@media screen and (max-width: 485px){
+    .outer-div{
+        width: 80%! important;
+        height: 60vh;
+        margin-top: 0%! important;
+        margin-left: 8%! important;
+    }
+    .assignment-div{
+        margin-left: 8%! important;
+        height: 60vh;
+        width: 80%! important;
+        margin-top: 65vh! important;
+    }
+
+}
+
+@media screen and (max-width: 380px){
+    .outer-div{
+        height: 60vh;
+    }
+    .assignment-div{
+        margin-top: 62vh! important;
+        height: 50vh;
+    }
+}

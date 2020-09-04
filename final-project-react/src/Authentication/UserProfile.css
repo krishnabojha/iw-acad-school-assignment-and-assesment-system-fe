@@ -1,0 +1,127 @@
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 20%;
+    height: auto;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    position: absolute;
+    margin-left: 40%;
+    margin-top: 60px;
+    background-color: rgb(223, 227, 236);
+    border-radius: 5px;
+  }
+  .profile-img{
+      margin-top: 2%;
+  }
+  .capture-img{
+    position: absolute;
+    margin-top: 75px;
+    margin-left: 60%;
+    border-radius: 7px;
+  }
+  .capture-img:hover{
+    width: 25px;
+  }
+  .get-img{
+    margin-top: 80px;
+    margin-left: 50%;
+    border-radius: 7px;
+    width: 20px;
+    position: absolute;
+      opacity: 0;
+  }
+  .card h1{
+    word-wrap: break-word;
+  }
+  .card p{
+    word-wrap: break-word;
+  }
+  .title {
+    color: grey;
+    font-size: 18px;
+  }
+  .card input{
+      color: black;
+      width: 70%;
+      font-family: arial;
+      text-align: center;
+      border: none;
+      outline: none;
+  }
+  .edit-icon{
+      /* background-color: blueviolet; */
+      position: absolute;
+      margin-top: 1px;
+      height: 18px;
+  }
+  
+  .edit-icon:hover{
+      background-color: rgb(72, 72, 252);
+  }
+  .edit-submit {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    margin: 2% 0%;
+  }
+  .cancel-div{
+      float: right;
+      height: 20px;
+  }
+  .cancel-div img{
+      border-radius: 30px;
+  }
+  .cancel-div img:hover{
+      background-color: rgb(63, 63, 212);
+  }
+ .none-submit{
+     padding-top: 8px;
+ }
+
+
+
+@media screen and (max-width: 1230px){
+  .card {
+    width: 25%;
+  }
+
+}
+
+@media screen and (max-width: 990px){
+  .card {
+    width: 35%;
+  }
+
+}
+
+@media screen and (max-width: 725px){
+  .card {
+    width: 45%;
+  }
+
+}
+
+@media screen and (max-width: 565px){
+  .card {
+    width: 60%;
+    margin-left: 40px;
+  }
+
+}
+
+@media screen and (max-width: 425px){
+  .card {
+    width: 75%;
+    margin-left: 40px;
+  }
+
+}

@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: url('../images/wall.jpg');
+    background-size: cover;
+    text-align: center;
+}
+.signin-form{
+    width: 28%;
+    /* height: 85vh; */
+    height: auto;
+    margin-top: 5%;
+    padding-top: 1%;
+    border-radius: 5px;
+    background-color: rgb(233, 218, 190);
+    text-align: center;
+    display: inline-block;
+    padding-bottom: 1%;
+}
+.signin-form label{
+    display: block;
+    float: left;
+    margin-left:15% ;
+    font-size: 18px;
+    font-family: 'Cambria';
+    padding-top: 2%;
+}
+.signin-form input{
+    width: 70%;
+    height: 25px;
+    border-radius: 3px;
+    border-width: 1px;
+    border: 1px solid #ccc;
+}
+.signin-form input:focus{
+    border: 1px solid rgb(40, 175, 228);
+    outline: none;
+    box-shadow:0 0 10px #86b9e2;
+}
+.signin-form a{
+    text-decoration: none;
+}
+.forget-pass{
+    margin-top: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    color: rgb(70, 70, 236);
+}
+.create-acc{
+    font-size: 13px;
+    color: rgb(11, 151, 245);
+    cursor: pointer;
+}
+.btn-section{
+    display: block;
+}
+.signin-form button{
+    margin-top: 8px;
+    width: 25%;
+    height: 30px;
+    margin-left: 2px;
+    margin-right: 2px;
+    border-radius: 12px;
+    background-color: white;
+    border: none;
+}
+.signin-form button:hover{
+    background-color: rgb(11, 151, 245);
+    color: white;
+    outline: none;
+}
+
+
+@media screen and (max-width: 768px){
+    .signin-form{
+        width: 40%;
+        /* height: 85vh; */
+        padding-top: 2%;
+        padding-bottom: 2%;
+    }
+
+}
+
+@media screen and (max-width: 600px){
+    .signin-form{
+        width: 50%;
+        /* height: 85vh; */
+        padding-top: 2%;
+        padding-bottom: 2%;
+    }
+
+}
+
+@media screen and (max-width: 425px){
+    .signin-form{
+        margin-top: 50px;
+        width: 60%;
+        /* height: 85vh; */
+        padding-top: 2%;
+        padding-bottom: 2%;
+    }
+
+}

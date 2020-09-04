@@ -1,0 +1,112 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.assignment-page{
+    width: 120%;
+    height: 70vh;
+    background-color: rgb(214, 210, 210);
+    position: absolute;
+    margin-top: -400px;
+    margin-left: -85%;
+    border-radius: 10px;
+    font-family: 'Cambria';
+}
+.cancel-assignment{
+    float: right;
+}
+.cancel-assignment:hover{
+    width: 30px;
+    height: 30px;
+    background-color: rgb(22, 99, 216);
+    border-radius: 20px;
+}
+.assignmentform{
+    width: 88%;
+    position: absolute;
+    display: block;
+    text-align: left;
+    margin-left: 5%;
+    margin-top: 3%;
+}
+.question{
+    width: 30%;
+}
+.question-field{
+    width:95%;
+    height: 30px;
+    font-size: 17px;
+    font:bold;
+    border:1px solid rgb(96, 96, 100);
+    border-radius: 3px;
+    background-color: rgb(233, 224, 224);
+}
+.pdf-file{
+    width: 85%;
+    height: auto;
+    border-radius: 10px;
+    border:1px solid black;
+    word-wrap: break-word;
+    background-color: rgb(218, 202, 181);
+}
+.pdf-file:hover{
+    background-color: rgb(214, 194, 168);
+}
+.question-message{
+    position: absolute;
+    margin-top: 3%;
+    margin-left: 2px;
+    font-size: 23px;
+}
+.submit-assignment{
+    margin-top: 10px;
+    width: 25%;
+    height: 30px;
+    margin-left: 2px;
+    margin-right: 2px;
+    border-radius: 12px;
+    background-color: white;
+    border: none;
+}
+.submit-assignment:hover{
+    background-color: rgb(11, 151, 245);
+    color: white;
+    outline: none;
+}
+.grade{
+    font-size: 20px;
+}
+
+@media screen and (max-width:1025px){
+    .assignment-page{
+        margin-top: -850px;
+        height: 40vh;
+    }
+}
+@media screen and (max-width:770px){
+    .assignment-page{
+        width: 110%;
+        margin-top: -550px;
+        height: 50vh;
+        margin-left: -5%;
+    }
+}
+@media screen and (max-width:455px){
+    .assignment-page{
+        height: 40vh;
+    }
+}
+@media screen and (max-width:380px){
+    .assignment-page{
+        height: 50vh;
+    }
+    .question-message{
+        margin-top: 12px;
+        font-size: 15px;
+    }
+}
+@media screen and (max-width:325px){
+    .assignment-page{
+        height: 60vh;
+    }
+}

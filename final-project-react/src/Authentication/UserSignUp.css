@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: url('../images/wall.jpg');
+    background-size: cover;
+    text-align: center;
+    height: 100vh;
+}
+.signup-form{
+    width: 30%;
+    height: 85vh;
+    height: auto;
+    margin-top: 2%;
+    padding-top: 1%;
+    border-radius: 5px;
+    background-color: rgb(233, 218, 190);
+    text-align: center;
+    display: inline-block;
+    padding-bottom: 2%;
+}
+.signup-form label{
+    display: block;
+    float: left;
+    margin-left:15% ;
+    font-size: 18px;
+    font-family: 'Cambria';
+    padding-top: 2%;
+}
+.signup-form input{
+    width: 70%;
+    height: 25px;
+    border-radius: 3px;
+    border-width: 1px;
+    border: 1px solid #ccc;
+}
+.signup-form input:focus{
+    border: 1px solid rgb(40, 175, 228);
+    outline: none;
+    box-shadow:0 0 10px #86b9e2;
+}
+.signup-form button{
+    margin-top: 8px;
+    width: 25%;
+    height: 30px;
+    border-radius: 12px;
+    background-color: white;
+    border: none;
+    outline: none;
+}
+.signup-form button:hover{
+    background-color: rgb(11, 151, 245);
+    color: white;
+    outline: none;
+}
+.signup-form a{
+    text-decoration: none;
+}
+.have-acc{
+    font-size: 12px;
+    padding-top: 1%;
+    color: rgb(11, 151, 245);
+    cursor: pointer;
+}
+.alert{
+    font-size: 12px;
+    color: red;
+}
+
+
+@media screen and (max-width: 768px){
+    .signup-form{
+        width: 40%;
+        padding-top: 2%;
+        padding-bottom: 2%;
+    }
+
+}
+
+@media screen and (max-width: 525px){
+    .signup-form{
+        width: 50%;
+        padding-top: 2%;
+        padding-bottom: 2%;
+        margin-top: 5%;
+    }
+
+}
+
+@media screen and (max-width: 400px){
+    .signup-form{
+        width: 60%;
+        padding-top: 2%;
+        padding-bottom: 2%;
+        margin-top: 10%;
+    }
+
+}

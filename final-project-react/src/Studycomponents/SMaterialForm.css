@@ -1,18 +1,22 @@
-/* Study material entry form */
+/* Study material entry form and create assignment */
 /* outer div of form start */
+
 .study-entry-form{
     background: rgb(212, 205, 205);
     border-radius: 5px;
-    width: 100%;
+    width: 90%;
     height: 300px;
     display: block;
     position: absolute;
+    padding-bottom: 3%;
+    padding-top: 1%;
+    margin-left: -40%;
+    z-index: 1;
 }
 /* outer div of form end */
 /* input form start */
-form{
-    padding-left: 5%;
-    
+.study-entry-form form{
+    padding-left: 5%;   
 }
 form h2{
     margin-bottom: 2%;
@@ -20,7 +24,9 @@ form h2{
 }
 form label{
     top: 30px;
-    font-family: Verdana;    
+    font-family: Verdana;
+    margin-left: 4%;
+    float: left;
 
 }
 form .textinput{
@@ -49,3 +55,18 @@ form input[type = text]:focus{
     font-size: 15px;
 }
 /* submit btn and clear btn end */
+
+.assignment-entry-form{
+    background: rgb(212, 205, 205);
+    border-radius: 5px;
+    width: 90%;
+    height: 300px;
+    display: block;
+    position: absolute;
+    padding-bottom: 3%;
+    padding-top: 1%;
+    margin-left: -40%;
+}
+.assignment-entry-form form{
+    padding-left: 5%;   
+}

@@ -10,13 +10,12 @@ body{
 
 }
 .outer-div{
-    width: 30%;
+    width: 60%;
     height: 85vh;
     border-radius: 10px;
     background-color: rgb(248, 238, 238);
     position: absolute;
-    left: 50%;
-    top:70px
+    top:10px
 }
 .study-material{
     text-align: center;
@@ -25,6 +24,7 @@ body{
 }
 .nav{
     padding-left: 5px;
+    text-align: left;
 }
 .nav button{
     border: none;
@@ -79,5 +79,22 @@ body{
     padding-top: 2%;
     padding-right: 2%;
 }
+.content{
+    cursor: pointer;
+}
 
+@media screen and (max-width: 1225px){
+    .outer-div{
+        position: absolute;
+      
+    }
 
+}
+@media screen and (max-width: 770px){
+    .outer-div{
+        width: 80%! important;
+        margin-left: 10%;
+      
+    }
+
+}

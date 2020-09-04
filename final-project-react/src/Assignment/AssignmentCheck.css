@@ -1,0 +1,194 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.assignmentCheck-page{
+    width: 120%;
+    height: 90vh;
+    background-color: rgb(214, 210, 210);
+    position: absolute;
+    margin-top: -420px;
+    margin-left: -85%;
+    border-radius: 10px;
+    font-family: 'Cambria';
+}
+.cancel-assignmentCheck{
+    float: right;
+}
+.cancel-assignmentCheck:hover{
+    width: 30px;
+    height: 30px;
+    background-color: rgb(22, 99, 216);
+    border-radius: 20px;
+}
+.assignmentCheckform{
+    width: 88%;
+    position: absolute;
+    display: block;
+    text-align: left;
+    margin-left: 5%;
+    margin-top: 3%;
+}
+.questionCheck{
+    width: 30%;
+}
+.questionCheck-field{
+    width:95%;
+    height: 30px;
+    font-size: 17px;
+    font:bold;
+    border:1px solid rgb(96, 96, 100);
+    border-radius: 3px;
+    background-color: rgb(233, 224, 224);
+}
+
+.done-tick{
+    width: 35px;
+    height: 35px;
+    margin-top: -10px;
+    margin-left: 78%;
+    position: absolute;
+}
+.delete-assignment{
+    width: 40px;
+    height: 40px;
+    margin-top: 40px;
+    margin-left: -8%;
+    border-radius: 10px;
+    position: absolute;
+}
+.delete-assignment:hover{
+    background-color: red;
+}
+.pdf-fileCheck{
+    width: 85%;
+    height: auto;
+    margin-top: 4px;
+    border-radius: 10px;
+    border:1px solid black;
+    word-wrap: break-word;
+    background-color: rgb(236, 225, 209);
+}
+.pdf-fileCheck:hover{
+    background-color: rgb(214, 194, 168);
+}
+.questionCheck-message{
+    position: absolute;
+    margin-top: 3%;
+    margin-left: 2px;
+    font-size: 23px;
+    
+}
+.StudentAnswer-div{
+    width: 100%;
+    height: 250px;
+    background-color: white;
+    border-radius: 5px;
+    overflow-y: auto;
+}
+.myAnswer{
+    width: 99%;
+    height: 50px;
+    margin-top: 2px;
+    margin-left: 1px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    background-color: rgb(206, 202, 194);
+}
+.myAnswer img{
+    position: absolute;
+}
+.studentName{
+    width: 47%;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    font-size: 25px;
+    margin-left: 15%;
+    position: absolute;
+}
+.rateAnswer{
+    width: 31%;
+    height: 30px;
+    color: rgb(6, 130, 202);
+    margin-left: 65%;
+    padding-top: 15px;
+    font-size: 18px;
+    position: absolute;
+}
+.rateAnswer:hover{
+    color: rgb(63, 181, 211);
+    font:bold
+}
+.rate-answer-div{
+    width: 200px;
+    margin-left: 90%;
+    margin-top: 50vh;
+    border-radius: 10px;
+    background-color: rgb(236, 230, 230);
+    position: absolute;
+}
+.rate-answer-div input{
+    width: 90%;
+    height: 25px;
+    border-radius: 4px;
+    border: 1px solid rgb(78, 76, 76);
+    margin-bottom:2%;
+}
+.rate-answer-div img{
+    float: right;
+}
+.rate-answer-div button{
+    width: 30%;
+    height: 25px;
+    margin:10px 2px;
+    border-radius: 12px;
+    background-color: white;
+    border: none;
+}
+.rate-answer-div button:hover{
+    background-color: rgb(11, 151, 245);
+    color: white;
+    outline: none;
+}
+
+@media screen and (max-width: 1025px){
+    .assignmentCheck-page{
+        margin-top: -850px;
+        height: 40vh;
+    }
+    .rate-answer-div{
+        margin-left: 20%;
+    }
+
+}
+@media screen and (max-width: 770px){
+    .assignmentCheck-page{
+        width: 110%;
+        margin-top: -550px;
+        height: 50vh;
+        margin-left: -5%;
+        
+    }
+    .questionCheck-message{
+        margin-top: 15px;
+        font-size: 15px;
+    }
+    .rateAnswer{
+        font-size: 15px;
+    }
+
+}
+@media screen and (max-width: 455px){
+    .assignmentCheck-page{
+        width: 110%;
+        margin-top: -550px;
+        height: 70vh;
+        margin-left: -5%;
+        
+    }
+    .StudentAnswer-div{
+        height: 200px;
+    }
+
+}

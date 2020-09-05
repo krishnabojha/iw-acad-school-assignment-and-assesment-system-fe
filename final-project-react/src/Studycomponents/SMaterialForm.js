@@ -31,7 +31,7 @@ export default class SMaterialForm extends Component {
         }
         else{
             /// post formdata to server
-        fetch('http://127.0.0.1:8000/data/studymaterial_material_create/',{
+        fetch('http://serene-wave-21722.herokuapp.com/data/studymaterial_material_create/',{
             method: 'POST',
             body: formData
         })

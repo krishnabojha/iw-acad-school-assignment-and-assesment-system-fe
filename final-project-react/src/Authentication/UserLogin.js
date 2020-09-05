@@ -17,7 +17,7 @@ export default class UserLogin extends Component {
         const formdata = new FormData()
         formdata.append('username', this.state.username)
         formdata.append('password', this.state.password)
-        fetch('http://127.0.0.1:8000/user/login/', {
+        fetch('http://serene-wave-21722.herokuapp.com/user/login/', {
         method: 'POST',
         Header: 'context-Type: application/json',
         body: formdata

@@ -13,14 +13,14 @@ export default class CheckAnswer extends Component {
     async componentDidMount(){
         try{
             // fetching submitted answer and filtering for the clicked question
-            const Answer = await fetch('http://127.0.0.1:8000/assignment/assignmentsubmit/list/')
+            const Answer = await fetch('http://serene-wave-21722.herokuapp.com/assignment/assignmentsubmit/list/')
             const studentAnswer = await Answer.json()
             const Assignmentid = this.props['assignment'].id
             console.log('question id: ', typeof(studentAnswer[0]['assignment_id'].id))
             const filtered_Answer = studentAnswer.filter(function(item){return item['assignment_id'].id === Assignmentid})
             
             ////fetching grade list to check whether the answer is rated or not
-            const ScoreList = await (await fetch('http://127.0.0.1:8000/assignment/grade/list/')).json()
+            const ScoreList = await (await fetch('http://serene-wave-21722.herokuapp.com/assignment/grade/list/')).json()
             console.log('this is grade list:', ScoreList)
             this.setState({
                 StudentAnswer: filtered_Answer,
@@ -35,7 +35,7 @@ export default class CheckAnswer extends Component {
     /// deleting assignment
     onDeleteAssignment=(event)=>{
         console.log('deleted')
-        fetch('http://127.0.0.1:8000/assignment/assignmentpdf_delete/'+this.props['assignment'].id,{
+        fetch('http://serene-wave-21722.herokuapp.com/assignment/assignmentpdf_delete/'+this.props['assignment'].id,{
             method:'DELETE'
         }).then(response => response.json())
         .then(result=>{

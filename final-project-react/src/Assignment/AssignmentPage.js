@@ -11,7 +11,7 @@ export default class AssignmentPage extends Component {
     async componentDidMount(){
         try{
             //Fetching all list of gradded assignment
-            const grades = await fetch('http://127.0.0.1:8000/assignment/grade/list/');
+            const grades = await fetch('http://serene-wave-21722.herokuapp.com/assignment/grade/list/');
             const gradelist = await grades.json();
             // console.log('this is start',(gradelist[0]['submitted_asignment'].assignment_id))
             const QuestionId = this.props['assignment'].id
@@ -19,7 +19,7 @@ export default class AssignmentPage extends Component {
             // console.log('your grade is', mygrade)
 
             /// Fetching submitted assignment list to check whether the asnwer is submited or not
-            const CheckSubmit = await (await fetch('http://127.0.0.1:8000/assignment/assignmentsubmit/list/')).json()
+            const CheckSubmit = await (await fetch('http://serene-wave-21722.herokuapp.com/assignment/assignmentsubmit/list/')).json()
             const SubmittedAnswer = CheckSubmit.filter(function(item){return((item["assignment_id"].id === QuestionId)&&(parseInt(localStorage.getItem('UserId'))=== item["submitter"].id))})
             // console.log('Answered User info:', SubmittedAnswer[0])
             if(SubmittedAnswer[0] !== undefined){
@@ -41,7 +41,7 @@ export default class AssignmentPage extends Component {
         submitdata.append('assignment_id', this.props['assignment'].id)
         submitdata.append('submitter', localStorage.getItem('UserId'))
         submitdata.append('files', this.state.answer[0])
-        fetch('http://127.0.0.1:8000/assignment/assignmentsubmit/create/',{
+        fetch('http://serene-wave-21722.herokuapp.com/assignment/assignmentsubmit/create/',{
             method: 'POST',
             body: submitdata
         }).then(response => response.json())

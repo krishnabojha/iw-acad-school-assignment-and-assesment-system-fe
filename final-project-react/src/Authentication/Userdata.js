@@ -29,7 +29,7 @@ export default class Userdata extends Component {
         const urllistlength = urllink.length
 
         //fetching token to get user_id
-        await fetch('http://serene-wave-21722.herokuapp.com/user/token/',{
+        await fetch('https://serene-wave-21722.herokuapp.com/user/token/',{
             method: 'GET'
         }).then(response => response.json())
         .then(result => {
@@ -41,7 +41,7 @@ export default class Userdata extends Component {
 
         //fetching users to get email
         // if (this.state.emailStored === false) {
-            await fetch('http://serene-wave-21722.herokuapp.com/user/list/',{
+            await fetch('https://serene-wave-21722.herokuapp.com/user/list/',{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ export default class Userdata extends Component {
         console.log('this is emailstored: ',this.state.emailStored)
         // }
         //fetching list of class that is link with logged in user
-        const studentuser = await fetch('http://serene-wave-21722.herokuapp.com/data/myclasses_list/'+this.state.usertoken[0].user_id)
+        const studentuser = await fetch('https://serene-wave-21722.herokuapp.com/data/myclasses_list/'+this.state.usertoken[0].user_id)
         const userjson = await studentuser.json()
         console.log('classes related to user id 1', userjson)
         this.setState({
@@ -85,7 +85,7 @@ export default class Userdata extends Component {
             const linkclassdata = new FormData()
             linkclassdata.append('classroom_id', parseInt(urllink[urllistlength-1]))
             linkclassdata.append('user_id', this.state.usertoken[0].user_id)
-            fetch('http://serene-wave-21722.herokuapp.com/data/myclasses_create/',{
+            fetch('https://serene-wave-21722.herokuapp.com/data/myclasses_create/',{
                 method: 'POST',
                 body:linkclassdata
             }).then(respone => respone.json())
@@ -94,7 +94,7 @@ export default class Userdata extends Component {
             })
         }
         //fetching profile of user from api
-        const porfile = await fetch('http://serene-wave-21722.herokuapp.com/data/userinfo_list/'+this.state.usertoken[0].user_id)
+        const porfile = await fetch('https://serene-wave-21722.herokuapp.com/data/userinfo_list/'+this.state.usertoken[0].user_id)
         const userprofile = await porfile.json()
         this.setState({
             userprofileobj: userprofile[0]
@@ -107,7 +107,7 @@ export default class Userdata extends Component {
         const newclass = new FormData()
         newclass.append('classname', this.state.newclassname)
         newclass.append('email', localStorage.getItem('email'))
-        fetch('http://serene-wave-21722.herokuapp.com/data/studymaterial_class_create/',{
+        fetch('https://serene-wave-21722.herokuapp.com/data/studymaterial_class_create/',{
             method: 'POST',
             body:newclass
         }).then(response => response.json())
@@ -115,7 +115,7 @@ export default class Userdata extends Component {
             const linkclassdata = new FormData()
             linkclassdata.append('classroom_id',result.id)
             linkclassdata.append('user_id', this.state.usertoken[0].user_id)
-            fetch('http://serene-wave-21722.herokuapp.com/data/myclasses_create/',{
+            fetch('https://serene-wave-21722.herokuapp.com/data/myclasses_create/',{
                 method: 'POST',
                 body:linkclassdata
             }).then(respone => respone.json())
@@ -129,7 +129,7 @@ export default class Userdata extends Component {
     }
     // delete class by user
     onDeleteClass = (event) =>{
-        fetch('http://serene-wave-21722.herokuapp.com/data/studymaterial_class_delete/'+this.state.classid,{
+        fetch('https://serene-wave-21722.herokuapp.com/data/studymaterial_class_delete/'+this.state.classid,{
             method:'DELETE'
         }).then(response=>response.json())
         .then(result=>{
@@ -180,7 +180,7 @@ export default class Userdata extends Component {
             inClassroom: true,
             classid:id,
             classemail: email,
-            invitationlink: 'http://serene-wave-21722.herokuapp.com/join/class/'+id  // use the valid url before /join while hosting
+            invitationlink: 'https://serene-wave-21722.herokuapp.com/join/class/'+id  // use the valid url before /join while hosting
 
         })
        

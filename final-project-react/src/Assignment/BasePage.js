@@ -17,14 +17,14 @@ export default class BasePage extends Component {
     async componentDidMount() {
         try {
             // fetching the list of created class
-            const rooms = await fetch('http://serene-wave-21722.herokuapp.com/data/studymaterial_class_list')
+            const rooms = await fetch('https://serene-wave-21722.herokuapp.com/data/studymaterial_class_list')
             const class_data = await rooms.json();
             // console.log('this is class data', class_data)
             const class_id = this.props['classid']
             const filtered_class = class_data.filter(function(item){return item.id === class_id})
             console.log('this is email', filtered_class[0].email)
             // fetching the list of study material of respective id
-            const res = await fetch('http://serene-wave-21722.herokuapp.com/assignment/assignmentpdf_list/'+this.props['classid']); // fetching the data from api, before the page loaded
+            const res = await fetch('https://serene-wave-21722.herokuapp.com/assignment/assignmentpdf_list/'+this.props['classid']); // fetching the data from api, before the page loaded
             const study_data = await res.json();
             const items = study_data
             console.log('assignment obj', study_data)

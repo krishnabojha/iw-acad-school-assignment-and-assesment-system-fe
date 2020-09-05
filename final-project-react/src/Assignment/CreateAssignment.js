@@ -26,7 +26,7 @@ export default class SMaterialForm extends Component {
         }
         else{
             /// post formdata to create assignment
-        fetch('http://serene-wave-21722.herokuapp.com/assignment/assignmentpdf_create/',{
+        fetch('https://serene-wave-21722.herokuapp.com/assignment/assignmentpdf_create/',{
             method: 'POST',
             body: formData
         })

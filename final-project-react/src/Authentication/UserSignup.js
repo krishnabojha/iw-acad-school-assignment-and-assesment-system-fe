@@ -22,7 +22,7 @@ export default class UserSignup extends Component {
         formdata.append('password', this.state.password)
         if(this.state.password.length >7){
             if (this.state.password === this.state.Cpassword) {
-                fetch('http://serene-wave-21722.herokuapp.com/user/create/', {
+                fetch('https://serene-wave-21722.herokuapp.com/user/create/', {
                 method: 'POST',
                 body: formdata
                 }
@@ -32,7 +32,7 @@ export default class UserSignup extends Component {
                     // creating user profile for logged in user
                         const newdata = new FormData()
                         newdata.append('userid', result.id)
-                        fetch('http://serene-wave-21722.herokuapp.com/data/userinfo_create/',{
+                        fetch('https://serene-wave-21722.herokuapp.com/data/userinfo_create/',{
                             method: 'POST',
                             body: newdata
                         }).then(response => response.json())

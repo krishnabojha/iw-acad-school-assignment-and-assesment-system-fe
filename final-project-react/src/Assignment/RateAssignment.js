@@ -11,7 +11,7 @@ export default class RateAssignment extends Component {
         const RateAnswer = new FormData()
         RateAnswer.append('submitted_asignment', this.props['assignmentId'])
         RateAnswer.append('score', this.state.gradevalue)
-        fetch('http://serene-wave-21722.herokuapp.com/assignment/grade/create/',{
+        fetch('https://serene-wave-21722.herokuapp.com/assignment/grade/create/',{
             method: 'POST',
             body: RateAnswer
         }).then(response=> response.json())

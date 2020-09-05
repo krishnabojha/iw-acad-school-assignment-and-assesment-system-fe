@@ -20,7 +20,7 @@ export default class UserLogin extends Component {
         this.setState({
             OTPcode: parseInt(rand)
         })
-        fetch('http://serene-wave-21722.herokuapp.com/user/send_otp/', {
+        fetch('https://serene-wave-21722.herokuapp.com/user/send_otp/', {
             method: 'POST',
             body: OTPdata
         }).then(result =>{
@@ -41,7 +41,7 @@ export default class UserLogin extends Component {
             // check whether the entered OTP is correct or not
             if(this.state.OTPcode === parseInt(this.state.otppassword)){
                 formdata.append('newpassword', this.state.newpassword)
-            fetch('http://serene-wave-21722.herokuapp.com/user/reset_password/'+localStorage.getItem('UserId'), {
+            fetch('https://serene-wave-21722.herokuapp.com/user/reset_password/'+localStorage.getItem('UserId'), {
             method: 'POST',
             Header: 'context-Type: application/json',
             body: formdata

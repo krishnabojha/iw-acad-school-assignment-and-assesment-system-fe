@@ -31,7 +31,7 @@ export default class UserProfile extends Component {
         newdata.append('address', this.state.address)
         newdata.append('bio', this.state.bio)
         newdata.append('userid', this.props['userprofile'].userid)
-        fetch('http://serene-wave-21722.herokuapp.com/data/userinfo_update/'+this.props['userprofile'].id,{
+        fetch('https://serene-wave-21722.herokuapp.com/data/userinfo_update/'+this.props['userprofile'].id,{
             method: 'PUT',
             body: newdata
         }).then(response => response.json())

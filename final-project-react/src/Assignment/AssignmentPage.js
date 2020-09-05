@@ -69,7 +69,7 @@ export default class AssignmentPage extends Component {
                 <div className = "assignmentform">
                     <h3 className = 'question'>Question:</h3>
                     <input type = "text" className = "question-field" disabled value = {this.props['assignment'].file_title}></input>
-                    <h3 className ="due_date">Due: {this.props['assignment'].due_date}</h3><br></br>
+                    <h3 className ="due_date">Due date: {this.props['assignment'].due_date}</h3><br></br>
                     <h3>File:</h3>
                     {
                         (this.state.AnswerDone === true)?

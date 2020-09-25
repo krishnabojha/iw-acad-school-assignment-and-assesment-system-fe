@@ -25,12 +25,17 @@ export default class ItemBlock extends Component {
         this.setState({
             displayform: false
         })
+        if(this.props['assignmentCreate'] === false){
+            this.props.refreshPage();
+        }
+        else{
+            this.props.reLoadAssignment()
+        }
+        
     }
     render() {
         const myclassObj = this.props['data']
         const creatAssignment = this.props['assignmentCreate']
-        // console.log('this is user email', this.state.myemail)
-        // console.log('my class email id ', myclassObj['email'])
             return (
                 <span>
                 {

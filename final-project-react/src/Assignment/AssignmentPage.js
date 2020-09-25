@@ -21,7 +21,7 @@ export default class AssignmentPage extends Component {
             /// Fetching submitted assignment list to check whether the asnwer is submited or not
             const CheckSubmit = await (await fetch('http://127.0.0.1:8000/assignment/assignmentsubmit/list/')).json()
             const SubmittedAnswer = CheckSubmit.filter(function(item){return((item["assignment_id"].id === QuestionId)&&(parseInt(localStorage.getItem('UserId'))=== item["submitter"].id))})
-            // console.log('Answered User info:', SubmittedAnswer[0])
+            console.log('Answered User info:', SubmittedAnswer[0])
             if(SubmittedAnswer[0] !== undefined){
                 this.setState({
                     AnswerDone: true

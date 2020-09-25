@@ -50,13 +50,17 @@ export default class BasePage extends Component {
          this.setState({
              showassignmentpage:false
          })
+         this.componentDidMount()
+     }
+     reLoadAssignment=()=>{
+         this.componentDidMount()
      }
     render() {
         return (
             <div className = "assignment-div">
                 <h2 className = "assignment-header">Assignment</h2>
                 <div className = "assignment-nav">
-                    <ItemBlock data = {this.state.emailobj} assignmentCreate = {this.state.assignmentCreate} ></ItemBlock>
+                    <ItemBlock reLoadAssignment = {this.reLoadAssignment} data = {this.state.emailobj} assignmentCreate = {this.state.assignmentCreate} ></ItemBlock>
                 </div>
                 <div className = 'assignment-content-div'>
                     

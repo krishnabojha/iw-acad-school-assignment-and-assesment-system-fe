@@ -37,14 +37,15 @@ export default class CheckAnswer extends Component {
         console.log('deleted')
         fetch('http://127.0.0.1:8000/assignment/assignmentpdf_delete/'+this.props['assignment'].id,{
             method:'DELETE'
-        }).then(response => response.json())
+        }).then(response => this.onHideAnswerForm())
         .then(result=>{
             console.log('success:', result)
         }).then(error=>{
             console.log('error: ', error)
         })
         event.preventDefault();
-        window.location.reload()
+        // window.location.reload()
+        // this.onHideAnswerForm()
     }
     onHideAnswerForm =()=>{
         this.props.assignmentPage()

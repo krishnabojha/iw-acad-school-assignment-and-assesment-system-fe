@@ -13,6 +13,7 @@ export default class SMaterialBlock extends Component {
         bgcolorfile: '',
         bgcolorvideo: '',
         assignmentCreate: false,
+        classId:''
 
     };
     async componentDidMount() {
@@ -25,7 +26,7 @@ export default class SMaterialBlock extends Component {
             const filtered_class = class_data.filter(function(item){return item.id === class_id})
             console.log('this is email', filtered_class[0].email)
             // fetching the list of study material of respective id
-            const res = await fetch('http://127.0.0.1:8000/data/studymaterial_material_list/'+this.props['classid']); // fetching the data from api, before the page loaded
+            const res = await fetch('http://127.0.0.1:8000/data/studymaterial_material_list/'+class_id); // fetching the data from api, before the page loaded
             const study_data = await res.json();
             const items = study_data
             this.setState({
@@ -36,7 +37,7 @@ export default class SMaterialBlock extends Component {
         } catch (e) {
             console.log(e);
         }
-        console.log('this is email from study material', this.props['classid'])
+        // console.log('this is email from study material', this.props['classid'])
       }
       // returning only videos when clicked to video btn
       onClickVideos=()=>{
@@ -74,6 +75,9 @@ export default class SMaterialBlock extends Component {
           bgcolorall: 'rgb(54, 133, 235)' 
      })
     }
+    refreshMaterial = ()=>{
+        this.componentDidMount()
+    }
     render() {
         console.log('SMT', this.state.items)
         return (
@@ -90,7 +94,7 @@ export default class SMaterialBlock extends Component {
                     <button onClick = {this.onClickAll} style = {{backgroundColor: this.state.bgcolorall}}>All</button>
                     <button onClick = {this.onClickFiles} style = {{backgroundColor: this.state.bgcolorfile}}>Files</button>
                     <button onClick = {this.onClickVideos} style = {{backgroundColor: this.state.bgcolorvideo}}>videos</button>
-                    <ItemBlock data = {this.state.emailobj} assignmentCreate = {this.state.assignmentCreate}></ItemBlock>
+                    <ItemBlock refreshPage = {this.refreshMaterial} data = {this.state.emailobj} assignmentCreate = {this.state.assignmentCreate}></ItemBlock>
                 </div>
                 <div className = 'study-content-div'>
                     

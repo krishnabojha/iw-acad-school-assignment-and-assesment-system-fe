@@ -22,23 +22,27 @@ export default class Userdata extends Component {
         showProfile: false,
         userName: '',
         fullname: '',
+        invited: true
     }
     async componentDidMount() {
         // check whether the link is referal or not
         const urllink = window.location.href.split('/')
         const urllistlength = urllink.length
-
+        const inClassroom = this.state.inClassroom
         //fetching token to get user_id
-        await fetch('http://127.0.0.1:8000/user/token/',{
+        if (inClassroom === false){
+            await fetch('http://127.0.0.1:8000/user/token/',{
             method: 'GET'
         }).then(response => response.json())
         .then(result => {
             console.log('this is result : ', result)
             this.setState({
                 usertoken: result.filter(function(item){return item.key === localStorage.getItem('token')}),
+                
             })
         })
-
+        }
+        
         //fetching users to get email
         // if (this.state.emailStored === false) {
             await fetch('http://127.0.0.1:8000/user/list/',{
@@ -90,8 +94,15 @@ export default class Userdata extends Component {
                 body:linkclassdata
             }).then(respone => respone.json())
             .then(result =>{
+                if(this.state.invited === true){
+                    this.componentDidMount()
+                    this.setState({
+                        invited: false
+                    })
+                }
                 console.log("setup is success")
             })
+              
         }
         //fetching profile of user from api
         const porfile = await fetch('http://127.0.0.1:8000/data/userinfo_list/'+this.state.usertoken[0].user_id)
@@ -131,19 +142,20 @@ export default class Userdata extends Component {
     onDeleteClass = (event) =>{
         fetch('http://127.0.0.1:8000/data/studymaterial_class_delete/'+this.state.classid,{
             method:'DELETE'
-        }).then(response=>response.json())
+        }).then(response=>this.componentDidMount())
         .then(result=>{
             console.log('result class delete:', result)
+            this.setState({
+                inClassroom: false
+            })
         }).then(error=>{
             console.log('error class delete:',error)
         })
         event.preventDefault();
-        window.location.reload()
     }
     //logout user by removing the token saved in browser
     onLogout =()=>{
         localStorage.removeItem('token')
-        // localStorage.removeItem('email')
         window.location.reload();
     }
     //create new class
@@ -166,6 +178,7 @@ export default class Userdata extends Component {
                 createbtn: 'Create Class'
             })
             this.onHandleSubmit()
+            this.componentDidMount()
             // window.location.reload()
         }
     }
